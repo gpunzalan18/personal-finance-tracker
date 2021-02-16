@@ -1,0 +1,17 @@
+<div *ngIf="data" id="line">
+  <canvas
+    baseChart
+    width="400"
+    height="300"
+    [chartType]="type"
+    [datasets]="data"
+    [labels]="labels"
+    [options]="options"
+    [legend]="legend"
+    [plugins]="plugins"
+  >
+  </canvas>
+
+  <!--     [colors]="colors" -->
+  Monthly Expenses By Category
+</div>
