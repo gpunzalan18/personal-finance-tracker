@@ -10,12 +10,12 @@ function getStorePath(): string {
   if (useMockData) {
     path += "/mock";
   } else {
-    path += "/output";
+    path += "/jsonData";
   }
   return path;
 }
 
-export const STORE_OUTPUT_WRITE_PATH: string = `${SRC_DIRECTORY}/store/output`;
+export const STORE_OUTPUT_WRITE_PATH: string = `${SRC_DIRECTORY}/store/jsonData`;
 export const STORE_OUTPUT_PATH: string = getStorePath();
 export const FRONTEND_PATH: string = "../../frontend/dist/frontend";
 
@@ -25,21 +25,13 @@ DATE_MONTH_MAP["21_01"] = "January 2021";
 DATE_MONTH_MAP["21_02"] = "February 2021";
 DATE_MONTH_MAP["21_03"] = "March 2021";
 
-export const CATEGORY_REGEX_LIST = [
-  {
-    category: Category.EATING_OUT,
-    regex: "(MCDONALD|POPEYES|HOLY DONUT|EMPIRE|DOMINO|UNCHARTED TEA|SHERE)",
-  },
-  {
-    category: Category.GROCERIES,
-    regex: "(WHOLEFDS|HANNAFORD)",
-  },
-  {
-    category: Category.ENTERTAINMENT,
-    regex: "(Disney|Roku)",
-  },
-  {
-    category: Category.LEGAL,
-    regex: "(USCIS|MICOL MION)",
-  },
-];
+export function getCategoryRegex(): string {
+  let path: string = `${SRC_DIRECTORY}/store`;
+  if (useMockData) {
+    path += "/mock";
+  } else {
+    path += "/jsonData";
+  }
+  path += "/categoryRegex.json";
+  return path;
+}

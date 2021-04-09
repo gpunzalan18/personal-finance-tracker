@@ -1,5 +1,6 @@
 /store/statements/shared/*
-/store/output/*
+/store/jsonData/*
+parser/categoryRegex.json
 *.pdf
 
 /dist/*

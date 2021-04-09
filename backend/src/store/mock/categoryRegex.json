@@ -1,0 +1,6 @@
+{
+  "eating_out": "(MCDONALD|STARBUCKS)",
+  "grocery": "(WHOLEFDS|WALMART|MART)",
+  "entertainment": "(Disney|Roku|NETFLIX)",
+  "other": "(CLAIRE)"
+}

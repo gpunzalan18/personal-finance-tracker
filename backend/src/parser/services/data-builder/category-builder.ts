@@ -3,13 +3,13 @@ import { Category } from "../../model/enum/categoy.enum";
 import { MonthlyTransactions } from "../../model/helpers/monthly-transactions";
 import { MonthlyExpensesByCategory } from "../../model/monthly-expenses-by-category";
 import { Transaction } from "../../model/helpers/transaction";
-import { CATEGORY_REGEX_LIST } from "../../../app.const";
+import { categoryRegex } from "../../category-regex";
 
 export class CategoryBuilder {
   public retrieveCategory(transactionDescription: string): Category {
     let category: Category = Category.OTHER;
-    for (let i = 0; i < CATEGORY_REGEX_LIST.length; i++) {
-      let categoryObj = CATEGORY_REGEX_LIST[i];
+    for (let i = 0; i < categoryRegex.list.length; i++) {
+      let categoryObj = categoryRegex.list[i];
       if (transactionDescription.match(new RegExp(categoryObj.regex, "g"))) {
         category = categoryObj.category;
         break;
@@ -22,7 +22,7 @@ export class CategoryBuilder {
     monthlyTransactions: MonthlyTransactions[]
   ): MonthlyExpensesByCategory[] {
     let monthlyExpensesByCategory: MonthlyExpensesByCategory[] = [];
-    
+
     /** Loop through each category enum */
     let allCategories: string[] = Object.values(Category);
     allCategories.forEach((category) => {
