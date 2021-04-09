@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-import { FRONTEND_DIRECTORY, ROOT_DIRECTORY } from "./app.const";
+import { FRONTEND_DIRECTORY } from "./app.const";
 import { parser } from "./services/parser/parser";
 
 import { jsonRetrievalService } from "./services/jsonRetrievalService";

@@ -11,7 +11,7 @@ import { ChartService } from 'src/app/services/chart.service';
 export class HomePageComponent implements OnInit {
   public monthlyExpensesByCategoryData: ChartDataSets[];
   public monthlyIncomesExpensesData: ChartDataSets[];
-  public labels: Label[] = ['January', 'February', 'March', 'April'];
+  public labels: Label[] = ['January', 'February', 'March'];
 
   constructor(public chartService: ChartService) {
     this.chartService
