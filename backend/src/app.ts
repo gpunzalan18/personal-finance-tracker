@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-import { ROOT_DIRECTORY } from "./app.const";
+import { FRONTEND_DIRECTORY, ROOT_DIRECTORY } from "./app.const";
 import { parser } from "./services/parser/parser";
 
 import { jsonRetrievalService } from "./services/jsonRetrievalService";
@@ -27,7 +27,7 @@ app.get("/sharedChecking/categories", async (req, res) => {
 });
 
 /** Serve UI */
-app.use("/", express.static(process.cwd() + "/ui/dist/ui"));
+app.use("/", express.static(process.cwd() + FRONTEND_DIRECTORY));
 
 /** ROOT - calls parser to build json files */
 app.listen(port, () => {

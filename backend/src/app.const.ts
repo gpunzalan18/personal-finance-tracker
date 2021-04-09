@@ -2,7 +2,7 @@ import { Category } from "./model/enum/categoy.enum";
 
 export const ROOT_DIRECTORY: string = `${__dirname}/..`;
 export const OUTPUT_FILE_PATH: string = `${ROOT_DIRECTORY}/assets/outputs`;
-
+export const FRONTEND_DIRECTORY: string = "../../frontend/dist/frontend";
 
 export const DATE_MONTH_MAP = {};
 DATE_MONTH_MAP["20_12"] = "December 2020";
