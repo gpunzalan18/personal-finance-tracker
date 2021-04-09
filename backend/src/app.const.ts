@@ -1,6 +1,6 @@
 import { Category } from "./parser/model/enum/categoy.enum";
 
-const useMockData: boolean = true;
+const useMockData: boolean = false;
 
 export const SRC_DIRECTORY: string = `${__dirname}`;
 export const STORE: string = `store`;
