@@ -14,10 +14,18 @@ DATE_MONTH_MAP["21_04"] = "April 2021";
 export const CATEGORY_REGEX_LIST = [
   {
     category: Category.EATING_OUT,
-    regex: "(MCDONALD|POPEYES|HOLY DONUT|EMPIRE|DOMINO|UNCHARTED TEA)",
+    regex: "(MCDONALD|POPEYES|HOLY DONUT|EMPIRE|DOMINO|UNCHARTED TEA|SHERE)",
   },
   {
     category: Category.GROCERIES,
     regex: "(WHOLEFDS|HANNAFORD)",
+  },
+  {
+    category: Category.ENTERTAINMENT,
+    regex: "(Disney|Roku)",
+  },
+  {
+    category: Category.LEGAL,
+    regex: "(USCIS|MICOL MION)",
   },
 ];

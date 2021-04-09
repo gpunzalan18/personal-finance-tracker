@@ -21,11 +21,12 @@ class Parser {
     return new Promise((resolve, reject) => {
       for (let i = 0; i < filenames.length; i++) {
         const filename: string = filenames[i];
+        console.log(`reading ${filename}`)
         if (filename.toString().includes(".pdf")) {
           pdf(fs.readFileSync(`${statementsDirPath}/${filename}`))
-            .then((pdfData) => {
+            .then(async (pdfData) => {
               incomeTransactions = incomeTransactions.concat(
-                tansactionParser.parseTransactionsByKeyWords(
+                await tansactionParser.parseTransactionsByKeyWords(
                   pdfData.text,
                   "Deposits and other additions\nDateDescriptionAmount",
                   "Total deposits and other additions",
@@ -33,7 +34,7 @@ class Parser {
                 )
               );
               expensesTransactions = expensesTransactions.concat(
-                tansactionParser.parseTransactionsByKeyWords(
+                await tansactionParser.parseTransactionsByKeyWords(
                   pdfData.text,
                   "Withdrawals and other subtractions\nDateDescriptionAmount",
                   "Total withdrawals and other subtractions",

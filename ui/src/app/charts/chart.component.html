@@ -1,4 +1,5 @@
 <div *ngIf="data" id="line">
+  {{title}}
   <canvas
     baseChart
     width="400"
@@ -9,9 +10,7 @@
     [options]="options"
     [legend]="legend"
     [plugins]="plugins"
+    [colors]="colors"
   >
   </canvas>
-
-  <!--     [colors]="colors" -->
-  Monthly Expenses By Category
 </div>

@@ -9,12 +9,15 @@ class TransactionBuilder {
   public buildMonthlyTransactions(
     transactions: Transaction[]
   ): MonthlyTransactions[] {
-    let parsedTransactions: Transaction[] = [];
-    let parsedTransactionsTotalAmount: number = 0;
 
-    let MonthlyTransactionsList: MonthlyTransactions[] = [];
+    let transactionsForCurrentMonth: Transaction[] = [];
+    let transactionsForCurrentMonthTotalAmount: number = 0;
+
+    let monthlyTransactionsList: MonthlyTransactions[] = [];
 
     let dateMonthMapKey: string = this.buildDateMonthMapKey(transactions[0]);
+    
+    //tracks the month we are currently parsing
     let month: string = DATE_MONTH_MAP[dateMonthMapKey];
 
     //TODO : fix sorting
@@ -22,27 +25,42 @@ class TransactionBuilder {
 
     transactions.forEach((transaction) => {
       dateMonthMapKey = this.buildDateMonthMapKey(transaction);
+      
       if (month == DATE_MONTH_MAP[dateMonthMapKey] && month != undefined) {
-        parsedTransactions.push(transaction);
-        parsedTransactionsTotalAmount += transaction.amount;
+        // if transaction is still in the same month, add to parsed transation.
+        transactionsForCurrentMonth.push(transaction);
+        transactionsForCurrentMonthTotalAmount += transaction.amount;
       } else {
+        // if month is not the same:
+        // 1) store the month's info
         let monthlyTransactions: MonthlyTransactions = new MonthlyTransactions(
           month,
-          parsedTransactions,
-          parsedTransactionsTotalAmount
+          transactionsForCurrentMonth,
+          transactionsForCurrentMonthTotalAmount
         );
-        MonthlyTransactionsList.push(monthlyTransactions);
+        monthlyTransactionsList.push(monthlyTransactions);
+
+        // 2) update to the next month
         month = DATE_MONTH_MAP[dateMonthMapKey];
 
-        parsedTransactions = [];
-        parsedTransactionsTotalAmount = 0;
+        // 3) reset transactionsForCurrentMonth and its total amount
+        transactionsForCurrentMonth = [];
+        transactionsForCurrentMonthTotalAmount = 0;
 
-        parsedTransactions.push(transaction);
-        parsedTransactionsTotalAmount += transaction.amount;
+        transactionsForCurrentMonth.push(transaction);
+        transactionsForCurrentMonthTotalAmount += transaction.amount
       }
     });
 
-    return MonthlyTransactionsList;
+    // store the remaining in the current month
+    let monthlyTransactions: MonthlyTransactions = new MonthlyTransactions(
+      month,
+      transactionsForCurrentMonth,
+      transactionsForCurrentMonthTotalAmount
+    );
+    monthlyTransactionsList.push(monthlyTransactions);
+
+    return monthlyTransactionsList
   }
 
   private buildDateMonthMapKey(transaction: Transaction): string {
