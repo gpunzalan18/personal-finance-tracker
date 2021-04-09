@@ -1,16 +1,13 @@
 {
-  "name": "backend",
+  "name": "budget-plan",
   "version": "1.0.0",
   "description": "automate budget planning",
   "main": "index.js",
   "scripts": {
-    "start:backend": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/app.ts",
-    "start:frontend": "cd ../frontend && ng serve",
-    "start": "cp -r ./backend/assets ./backend/dist/assets && cd ./frontend && ng build  && cd ../../ && tsc && node dist/app.js",
-    "test": "cp -r ./backend/assets ./backend/dist/assets "
+    "start:backend": "cd ./backend && npm run dev",
+    "start:frontend": "cd ./frontend && npm run start",
+    "start": "cd ./frontend && npm run build  && cd ../ && cd ./backend && npm run start"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {}
+  "license": "ISC"
 }

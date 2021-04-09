@@ -4,9 +4,8 @@
   "description": "automate budget planning",
   "main": "index.js",
   "scripts": {
-    "start:backend": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/app.ts",
-    "start:frontend": "cd ../frontend && ng serve",
-    "start": "cp -r ./assets ./dist/assets && cd ../frontend && ng build && cd ../../ && tsc && node dist/app.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/app.ts",
+    "start": "tsc && cp -r ./assets ./dist  && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
