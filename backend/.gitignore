@@ -1,6 +1,7 @@
 /store/statements/shared/*
 /store/output/*
 *.pdf
+
 /dist/*
 
 .DS_Store

@@ -21,7 +21,7 @@ class Parser {
     return new Promise((resolve, reject) => {
       for (let i = 0; i < filenames.length; i++) {
         const filename: string = filenames[i];
-        console.log(`reading ${filename}`)
+        console.log(`reading ${filename}`);
         if (filename.toString().includes(".pdf")) {
           pdf(fs.readFileSync(`${statementsDirPath}/${filename}`))
             .then(async (pdfData) => {
