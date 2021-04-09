@@ -1,0 +1,155 @@
+{
+  "title": "BofA Shared Checking",
+  "incomes": {
+    "monthlyTransactions": [
+      {
+        "title": "January 2021",
+        "transactions": [
+          {
+            "date": "01/10/21",
+            "description": "HR paystub fake",
+            "amount": 1800,
+            "category": null
+          }
+        ],
+        "total": 1800
+      },
+      {
+        "title": "February 2021",
+        "transactions": [
+          {
+            "date": "02/15/21",
+            "description": "HR paystub fake",
+            "amount": 500,
+            "category": null
+          }
+        ],
+        "total": 500
+      },
+      {
+        "title": "March 2021",
+        "transactions": [
+          {
+            "date": "03/03/21",
+            "description": "MOBILE DEPOSIT",
+            "amount": 1000,
+            "category": null
+          }
+        ],
+        "total": 1000
+      }
+    ]
+  },
+  "expenses": {
+    "monthlyTransactions": [
+      {
+        "title": "January 2021",
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 100,
+            "category": "grocery"
+          },
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 50,
+            "category": "other"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 45,
+            "category": "grocery"
+          },
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 5,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 10,
+            "category": "eating out"
+          }
+        ],
+        "total": 210
+      },
+      {
+        "title": "February 2021",
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 40,
+            "category": "grocery"
+          },
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 100,
+            "category": "other"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 45,
+            "category": "grocery"
+          },
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 60,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 55,
+            "category": "eating out"
+          }
+        ],
+        "total": 300
+      },
+      {
+        "title": "March 2021",
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 100,
+            "category": "grocery"
+          },
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 10,
+            "category": "other"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 10,
+            "category": "grocery"
+          },
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 20,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 150,
+            "category": "eating out"
+          }
+        ],
+        "total": 290
+      }
+    ]
+  }
+}

@@ -3,7 +3,7 @@ import { Category } from "../../model/enum/categoy.enum";
 import { MonthlyTransactions } from "../../model/helpers/monthly-transactions";
 import { MonthlyExpensesByCategory } from "../../model/monthly-expenses-by-category";
 import { Transaction } from "../../model/helpers/transaction";
-import { CATEGORY_REGEX_LIST } from "../../app.const";
+import { CATEGORY_REGEX_LIST } from "../../../app.const";
 
 export class CategoryBuilder {
   public retrieveCategory(transactionDescription: string): Category {

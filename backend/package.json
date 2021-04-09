@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/app.ts",
-    "start": "tsc && cp -r ./assets ./dist  && node dist/app.js",
+    "start": "tsc && cp -r ./src/store ./dist && node dist/app.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Grace Punzalan",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.16.1",

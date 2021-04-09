@@ -1,0 +1,169 @@
+[
+  {
+    "title": "eating out",
+    "monthlyTransactions": [
+      {
+        "title": "January 2021",
+        "total": 132,
+        "transactions": [
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 5,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 10,
+            "category": "eating out"
+          }
+        ]
+      },
+      {
+        "title": "February 2021",
+        "total": 107,
+        "transactions": [
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 60,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 55,
+            "category": "eating out"
+          }
+        ]
+      },
+      {
+        "title": "March 2021",
+        "total": 72,
+        "transactions": [
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 20,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 150,
+            "category": "eating out"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "grocery",
+    "monthlyTransactions": [
+      {
+        "title": "January 2021",
+        "total": null,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 100,
+            "category": "grocery"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 45,
+            "category": "grocery"
+          }
+        ]
+      },
+      {
+        "title": "February 2021",
+        "total": 131,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 40,
+            "category": "grocery"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 45,
+            "category": "grocery"
+          }
+        ]
+      },
+      {
+        "title": "March 2021",
+        "total": 92,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "GROCERY MART",
+            "amount": 100,
+            "category": "grocery"
+          },
+          {
+            "date": "01/19/21",
+            "description": "GROCERY MART 1",
+            "amount": 10,
+            "category": "grocery"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "entertainment",
+    "monthlyTransactions": [
+      { "title": "January 2021", "total": 0, "transactions": [] },
+      { "title": "February 2021", "total": 0, "transactions": [] },
+      { "title": "March 2021", "total": 0, "transactions": [] }
+    ]
+  },
+  {
+    "title": "other",
+    "monthlyTransactions": [
+      {
+        "title": "January 2021",
+        "total": 47,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 50,
+            "category": "other"
+          }
+        ]
+      },
+      {
+        "title": "February 2021",
+        "total": 0,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 100,
+            "category": "other"
+          }
+        ]
+      },
+      {
+        "title": "March 2021",
+        "total": 0,
+        "transactions": [
+          {
+            "date": "01/15/21",
+            "description": "CLAIRE FURNITURES",
+            "amount": 10,
+            "category": "other"
+          }
+        ]
+      }
+    ]
+  }
+]

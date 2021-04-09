@@ -3,7 +3,7 @@ import fs from "fs";
 import { Incomes } from "../../model/helpers/incomes";
 import { Transaction } from "../../model/helpers/transaction";
 import { Expenses } from "../../model/helpers/expenses";
-import { ROOT_DIRECTORY } from "../../app.const";
+import { SRC_DIRECTORY } from "../../../app.const";
 import { TransactionType } from "../../model/enum/transaction-type.enum";
 import { tansactionParser } from "./transaction-parser";
 import { transactionBuilder } from "../data-builder/transaction-builder";
@@ -15,7 +15,7 @@ class Parser {
     let incomeTransactions: Transaction[] = [];
     let expensesTransactions: Transaction[] = [];
 
-    let statementsDirPath = `${ROOT_DIRECTORY}/assets/statements/shared`;
+    let statementsDirPath = `${SRC_DIRECTORY}/store/statements/shared`;
     let filenames: string[] = fs.readdirSync(statementsDirPath);
 
     return new Promise((resolve, reject) => {

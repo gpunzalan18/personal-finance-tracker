@@ -1,9 +1,9 @@
 import express from "express";
 import fs from "fs";
-import { FRONTEND_DIRECTORY, ROOT_DIRECTORY } from "./app.const";
-import { parser } from "./services/parser/parser";
+import { FRONTEND_PATH } from "./app.const";
+import { parser } from "./parser/services/pdf-parser/parser";
 
-import { jsonRetrievalService } from "./services/jsonRetrievalService";
+import { jsonRetrievalService } from "./storeService";
 
 const app = express();
 const port = 3000;
@@ -16,18 +16,18 @@ app.use((req, res, next) => {
 });
 
 /** RESTFUL APIs */
-app.get("/sharedChecking", async (req, res) => {
+app.get("/incomesAndExpenses", async (req, res) => {
   return res.status(200).send(jsonRetrievalService.getMonthlyTransactions());
 });
 
-app.get("/sharedChecking/categories", async (req, res) => {
+app.get("/incomesAndExpenses/categories", async (req, res) => {
   return res
     .status(200)
     .send(jsonRetrievalService.getMonthlyTransactionsByCategories());
 });
 
 /** Serve UI */
-app.use("/", express.static(process.cwd() + FRONTEND_DIRECTORY));
+app.use("/", express.static(process.cwd() + FRONTEND_PATH));
 
 /** ROOT - calls parser to build json files */
 app.listen(port, () => {
