@@ -1,12 +1,12 @@
 import { categoryRegex } from "./parser/category-regex";
-import { Category } from "../model/enum/categoy.enum";
+import { ExpensesCategory } from "../model/enum/expenses-categoy.enum";
 import { MonthlyTransactions } from "../model/helpers/monthly-transactions";
 import { MonthlyTransactionsByCategory } from "../model/helpers/monthly-transactions-by-category";
 import { Transaction } from "../model/helpers/transaction";
 
 class CategoryService {
-  public getCategory(description: string): Category {
-    let category: Category = Category.OTHER;
+  public getCategory(description: string): ExpensesCategory {
+    let category: ExpensesCategory = ExpensesCategory.OTHER;
     const categoryRegexList: any[] = categoryRegex.list;
     try {
       for (let i = 0; i < categoryRegexList.length; i++) {
@@ -31,7 +31,7 @@ class CategoryService {
     let filteredTransactions: Transaction[];
     let amount: number;
     let monthlyTransactionsByCategory: MonthlyTransactionsByCategory[] = [];
-    const categories: string[] = Object.values(Category);
+    const categories: string[] = Object.values(ExpensesCategory);
     for (let i = 0; i < categories.length; i++) {
       filteredMonthlyTransactions = [];
 

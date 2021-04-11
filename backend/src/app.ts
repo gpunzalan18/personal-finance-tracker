@@ -1,7 +1,7 @@
 import express from "express";
 import { FRONTEND_PATH } from "./app.const";
-import { parser } from "./parser/services/parser/parser";
-import { jsonService } from "./parser/services/json-service";
+import { parser } from "./services/parser/parser";
+import { jsonService } from "./services/json-service";
 
 const app = express();
 const port = 3000;

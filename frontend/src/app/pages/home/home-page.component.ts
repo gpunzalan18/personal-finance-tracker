@@ -11,17 +11,17 @@ import { ChartService } from 'src/app/services/chart.service';
 export class HomePageComponent implements OnInit {
   public monthlyExpensesByCategoryData: ChartDataSets[];
   public monthlyIncomesExpensesData: ChartDataSets[];
-  public labels: Label[] = ['January', 'February', 'March'];
+  public labels: Label[] = ['January', 'February', 'March', 'April'];
 
   constructor(public chartService: ChartService) {
     this.chartService
-      .getDataForMonthlyExpensesByCategory()
+      .getMonthlyTransactionsByCategory()
       .subscribe(
         (chartData: any[]) => (this.monthlyExpensesByCategoryData = chartData)
       );
 
     this.chartService
-      .getDataForMonthlyIncomesExpenses()
+      .getIncomesAndExpenses()
       .subscribe(
         (chartData: any[]) => (this.monthlyIncomesExpensesData = chartData)
       );

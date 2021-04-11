@@ -1,6 +1,6 @@
 [
   {
-    "title": "eating out",
+    "category": "eating out",
     "monthlyTransactions": [
       {
         "title": "January 2021",
@@ -55,11 +55,29 @@
             "category": "eating out"
           }
         ]
+      },
+      {
+        "title": "April 2021",
+        "total": 172,
+        "transactions": [
+          {
+            "date": "01/25/21",
+            "description": "STARBUCKS",
+            "amount": 35,
+            "category": "eating out"
+          },
+          {
+            "date": "01/28/21",
+            "description": "MCDONALD'S",
+            "amount": 100,
+            "category": "eating out"
+          }
+        ]
       }
     ]
   },
   {
-    "title": "grocery",
+    "category": "grocery",
     "monthlyTransactions": [
       {
         "title": "January 2021",
@@ -114,11 +132,29 @@
             "category": "grocery"
           }
         ]
+      },
+      {
+        "title": "April 2021",
+        "total": 92,
+        "transactions": [
+          {
+            "date": "04/01/21",
+            "description": "GROCERY MART",
+            "amount": 100,
+            "category": "grocery"
+          },
+          {
+            "date": "04/20/21",
+            "description": "GROCERY MART 1",
+            "amount": 10,
+            "category": "grocery"
+          }
+        ]
       }
     ]
   },
   {
-    "title": "entertainment",
+    "category": "entertainment",
     "monthlyTransactions": [
       { "title": "January 2021", "total": 0, "transactions": [] },
       { "title": "February 2021", "total": 0, "transactions": [] },
@@ -126,7 +162,7 @@
     ]
   },
   {
-    "title": "other",
+    "category": "other",
     "monthlyTransactions": [
       {
         "title": "January 2021",

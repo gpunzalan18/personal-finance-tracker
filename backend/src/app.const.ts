@@ -1,5 +1,3 @@
-import { Category } from "./parser/model/enum/categoy.enum";
-
 const useMockData: boolean = true;
 
 export const SRC_DIRECTORY: string = `${__dirname}`;

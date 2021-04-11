@@ -1,10 +1,10 @@
-import { STORE_OUTPUT_PATH, STORE_OUTPUT_WRITE_PATH } from "../../app.const";
-import { IncomesAndExpenses } from "../model/helpers/incomes-and-expenses";
+import { STORE_OUTPUT_PATH, STORE_OUTPUT_WRITE_PATH } from "../app.const";
+import { IncomesSavingsExpenses } from "../model/helpers/incomes-savings-expenses";
 import fs from "fs";
 
 class JsonService {
   public buildMonthlyIncomesAndExpenses(
-    incomesAndExpenses: IncomesAndExpenses
+    incomesAndExpenses: IncomesSavingsExpenses
   ) {
     this.write("incomes_and_expenses", incomesAndExpenses);
   }

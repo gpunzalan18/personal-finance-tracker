@@ -1,4 +1,4 @@
-import { Category } from "../enum/categoy.enum";
+import { ExpensesCategory } from "../enum/expenses-categoy.enum";
 import { TransactionType } from "../enum/transaction-type.enum";
 
 export class Transaction {
@@ -7,6 +7,6 @@ export class Transaction {
     public readonly description: string,
     public readonly amount: number,
     public readonly type: TransactionType,
-    public readonly category: Category
+    public readonly category: ExpensesCategory
   ) {}
 }

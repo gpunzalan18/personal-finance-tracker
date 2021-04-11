@@ -1,8 +1,9 @@
-export enum Category {
+export enum ExpensesCategory {
+  GIVE = "give",
+  BILLS = "bills",
   GROCERY = "grocery",
   ENTERTAINMENT = "entertainment",
   LEGAL = "legal",
-  RESTAURANTS = "restaurant",
-  VANGUARD = "vanguard",
+  RESTAURANT = "restaurant",
   OTHER = "other",
 }
