@@ -1,6 +1,6 @@
 import fs from "fs";
-import { getCategoryRegex } from "../app.const";
-import { Category } from "./model/enum/categoy.enum";
+import { getCategoryRegex } from "../../../app.const";
+import { Category } from "../../model/enum/categoy.enum";
 
 class CategoryRegex {
   public list: any[];
@@ -12,8 +12,8 @@ class CategoryRegex {
     );
     this.list = [
       {
-        category: Category.EATING_OUT,
-        regex: regexList["eating_out"],
+        category: Category.RESTAURANTS,
+        regex: regexList["restaurant"],
       },
       {
         category: Category.GROCERY,
@@ -26,6 +26,14 @@ class CategoryRegex {
       {
         category: Category.LEGAL,
         regex: regexList["legal"],
+      },
+      {
+        category: Category.VANGUARD,
+        regex: regexList["vanguard"],
+      },
+      {
+        category: Category.OTHER,
+        regex: regexList["other"],
       },
     ];
   }

@@ -1,45 +1,43 @@
 {
   "title": "BofA Shared Checking",
-  "incomes": {
-    "monthlyTransactions": [
-      {
-        "title": "January 2021",
-        "transactions": [
-          {
-            "date": "01/10/21",
-            "description": "HR paystub fake",
-            "amount": 1800,
-            "category": null
-          }
-        ],
-        "total": 1800
-      },
-      {
-        "title": "February 2021",
-        "transactions": [
-          {
-            "date": "02/15/21",
-            "description": "HR paystub fake",
-            "amount": 500,
-            "category": null
-          }
-        ],
-        "total": 500
-      },
-      {
-        "title": "March 2021",
-        "transactions": [
-          {
-            "date": "03/03/21",
-            "description": "MOBILE DEPOSIT",
-            "amount": 1000,
-            "category": null
-          }
-        ],
-        "total": 1000
-      }
-    ]
-  },
+  "incomes": [
+    {
+      "title": "January 2021",
+      "transactions": [
+        {
+          "date": "01/10/21",
+          "description": "HR paystub fake",
+          "amount": 1800,
+          "category": null
+        }
+      ],
+      "total": 1800
+    },
+    {
+      "title": "February 2021",
+      "transactions": [
+        {
+          "date": "02/15/21",
+          "description": "HR paystub fake",
+          "amount": 500,
+          "category": null
+        }
+      ],
+      "total": 500
+    },
+    {
+      "title": "March 2021",
+      "transactions": [
+        {
+          "date": "03/03/21",
+          "description": "MOBILE DEPOSIT",
+          "amount": 1000,
+          "category": null
+        }
+      ],
+      "total": 1000
+    }
+  ],
   "expenses": {
     "monthlyTransactions": [
       {

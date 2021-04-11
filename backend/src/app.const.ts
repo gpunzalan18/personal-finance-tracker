@@ -1,6 +1,6 @@
 import { Category } from "./parser/model/enum/categoy.enum";
 
-const useMockData: boolean = false;
+const useMockData: boolean = true;
 
 export const SRC_DIRECTORY: string = `${__dirname}`;
 export const STORE: string = `store`;
@@ -32,6 +32,6 @@ export function getCategoryRegex(): string {
   } else {
     path += "/jsonData";
   }
-  path += "/categoryRegex.json";
+  path += "/category_regex.json";
   return path;
 }

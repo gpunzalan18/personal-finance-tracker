@@ -1,6 +1,8 @@
 /store/statements/shared/*
 */store/jsonData/*.json
+*/store/jsonData/*.csv
 *.pdf
+*.csv
 
 /dist/*
 
