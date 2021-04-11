@@ -1,0 +1,9 @@
+<div class="text-center">
+  <input class="form-control" type="file" (change)="onChange($event)" />
+  <div *ngIf="transactions$ | async as transactions">
+    <button style="float: left">parse</button>
+    <pre style="padding-top: 50px" id="csv">
+        {{ transactions }}
+    </pre>
+  </div>
+</div>

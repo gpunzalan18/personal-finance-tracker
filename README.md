@@ -1,13 +1,27 @@
-# personal-finance-tracker
+# Tracker
 
-The goal of this project is to provide visibility in your personal finance. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
-# Development
-- run `npm install` for both `frontend` and `backend`
-- `npm run start` to build the frontend and serve the backend. The local interface will be available at `http://localhost:3000/`.
-- `npm run start:frontend` to start a new server for the ui, which will be available at `http://localhost:4200/`
-- `npm run start:backend` to start a new server for the service without transpiling it to JS. This which will be available at `http://localhost:4200/`
+## Development server
 
-# Built With
-- [ChartJs](https://www.chartjs.org/)
-- [Express](https://expressjs.com/)
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
