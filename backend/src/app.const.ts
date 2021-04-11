@@ -8,12 +8,12 @@ function getStorePath(): string {
   if (useMockData) {
     path += "/mock";
   } else {
-    path += "/jsonData";
+    path += "/output";
   }
   return path;
 }
 
-export const STORE_OUTPUT_WRITE_PATH: string = `${SRC_DIRECTORY}/store/jsonData`;
+export const STORE_OUTPUT_WRITE_PATH: string = `${SRC_DIRECTORY}/store/output`;
 export const STORE_OUTPUT_PATH: string = getStorePath();
 export const FRONTEND_PATH: string = "../../frontend/dist/frontend";
 
@@ -28,7 +28,7 @@ export function getCategoryRegex(): string {
   if (useMockData) {
     path += "/mock";
   } else {
-    path += "/jsonData";
+    path += "";
   }
   path += "/category_regex.json";
   return path;
