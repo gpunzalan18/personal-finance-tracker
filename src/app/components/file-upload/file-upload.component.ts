@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParserService } from 'src/app/services/parser/parser.service';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-upload.component.css'],
 })
 export class FileUploadComponent implements OnInit {
-  transactions$: Observable<string>;
+  transactions$: Subject<string>;
   constructor(private parserService: ParserService) {
-    this.transactions$ = parserService.transactionObservable;
+    this.transactions$ = parserService.transactionSybject;
   }
 
   ngOnInit(): void {}

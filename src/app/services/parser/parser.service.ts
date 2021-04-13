@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Transaction } from '../models/transaction';
 import { TransactionType } from '../models/transaction-type.enum';
 import { RegexService } from '../regex/regex.service';
 import { MonthlyTransactions } from '../models/monthly-transactions';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ParserService {
-  subscriber: any;
-  transactionObservable: Observable<any>;
+  transactionSybject: Subject<any>;
 
   constructor(private regexService: RegexService) {
-    this.transactionObservable = new Observable((s) => {
-      this.subscriber = s;
-    });
+    this.transactionSybject = new Subject();
   }
 
   read(data: any) {
-    this.subscriber.next(data);
+    this.transactionSybject.next(data);
   }
 
   parse(data: string) {
