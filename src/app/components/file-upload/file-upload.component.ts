@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Transaction } from 'backend/src/model/helpers/transaction';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { ParserService } from 'src/app/services/parser/parser.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,9 +8,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-upload.component.css'],
 })
 export class FileUploadComponent implements OnInit {
-  transactions$: Observable<Transaction[]>;
-  constructor(private fileUploadService: FileUploadService) {
-    this.transactions$ = fileUploadService.transactionObservable 
+  transactions$: Observable<string>;
+  constructor(private parserService: ParserService) {
+    this.transactions$ = parserService.transactionObservable;
   }
 
   ngOnInit(): void {}
@@ -19,8 +18,12 @@ export class FileUploadComponent implements OnInit {
   onChange(event: any) {
     var reader = new FileReader();
     reader.onload = () => {
-      this.fileUploadService.parse(reader.result);
+      this.parserService.read(reader.result);
     };
     reader.readAsText(event.target.files[0]);
+  }
+
+  parse(transactions: string) {
+    this.parserService.parse(transactions);
   }
 }
