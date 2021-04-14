@@ -1,0 +1,14 @@
+<div id="chart-container">
+  <h2>{{ title }}</h2>
+  <canvas
+    baseChart
+    width="600"
+    height="400"
+    [chartType]="type"
+    [datasets]="data"
+    [labels]="labels"
+    [options]="options"
+    [legend]="legend"
+    [colors]="colors"
+  ></canvas>
+</div>

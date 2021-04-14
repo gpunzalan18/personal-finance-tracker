@@ -1,3 +1,15 @@
-<p>dashboard works!</p>
-
-<app-file-upload></app-file-upload>
+<div>
+  <app-file-upload></app-file-upload>
+  <div *ngIf="data.length > 0" class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <app-chart
+          type="line"
+          title="Monthly Expenses"
+          [data]="data"
+          [labels]="labels"
+        ></app-chart>
+      </div>
+    </div>
+  </div>
+</div>

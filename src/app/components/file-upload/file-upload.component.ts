@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 export class FileUploadComponent implements OnInit {
   transactions$: Subject<string>;
   constructor(private parserService: ParserService) {
-    this.transactions$ = parserService.transactionSybject;
+    this.transactions$ = parserService.readTransactionsSubject;
   }
 
   ngOnInit(): void {}
