@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ParserService } from 'src/app/services/parser/parser.service';
 import { Subject } from 'rxjs';
+import { Output, EventEmitter } from '@angular/core';
+import { Transaction } from 'src/app/services/models/transaction';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,10 +10,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./file-upload.component.css'],
 })
 export class FileUploadComponent implements OnInit {
-  transactions$: Subject<string>;
-  constructor(private parserService: ParserService) {
-    this.transactions$ = parserService.readTransactionsSubject;
-  }
+  @Input('heading') heading: string = '';
+  @Input('subHeading') subHeading: string = '';
+  @Input('btnTitle') btnTitle: string = '';
+  @Output() uploadedData: EventEmitter<Transaction[]> = new EventEmitter<
+    Transaction[]
+  >();
+
+  data: any;
+  constructor(private parserService: ParserService) {}
 
   ngOnInit(): void {}
 
@@ -19,11 +26,12 @@ export class FileUploadComponent implements OnInit {
     var reader = new FileReader();
     reader.onload = () => {
       this.parserService.read(reader.result);
+      this.data = reader.result;
     };
     reader.readAsText(event.target.files[0]);
   }
 
-  parse(transactions: string) {
-    this.parserService.parse(transactions);
+  emitToParseTransactions(data: any) {
+    this.uploadedData.emit(data);
   }
 }

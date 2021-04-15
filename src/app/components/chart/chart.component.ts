@@ -10,12 +10,13 @@ export class ChartComponent implements OnInit {
   @ViewChild('myCanvas')
   public canvas!: ElementRef;
   public options: any;
-  public colors: any[] = [];
+  //public colors: any[] = [];
   public legend: any = true;
-  @Input() type: ChartType = 'line';
+  // @Input() type: ChartType = 'bar';
   @Input() title: string = '';
   @Input() data: any[] = [];
   @Input() labels: any[] = [];
+  @Input() colors: any[] = [];
 
   ngOnInit() {
     // this.data = [
@@ -31,34 +32,35 @@ export class ChartComponent implements OnInit {
     //   },
     // ];
 
-    this.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
-    this.colors = [
-      {
-        borderColor: 'rgba(24,120,6,0.28)',
-        backgroundColor: 'rgba(24,120,76,0.5)',
-      },
-      {
-        borderColor: 'rgba(121,123,189,0.28)',
-        backgroundColor: 'rgba(121,123,189,0.5)',
-      },
-      {
-        borderColor: 'rgba(7,2,195,0.28)',
-        backgroundColor: 'rgba(121,0,225,0.5)',
-      },
-      {
-        borderColor: 'rgba(234,25,0,0.28)',
-        backgroundColor: 'rgba(234,25,0,0.5)',
-      },
-      {
-        borderColor: 'rgba(204,195,45,0.28)',
-        backgroundColor: 'rgba(204,195,45,0.5)',
-      },
+    // this.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+    // this.colors = [
+    //   {
+    //     borderColor: 'rgba(24,120,6,0.28)',
+    //     backgroundColor: 'rgba(24,120,76,0.5)',
+    //   },
+    //   {
+    //     borderColor: 'rgba(121,123,189,0.28)',
+    //     backgroundColor: 'rgba(121,123,189,0.5)',
+    //   },
+    //   {
+    //     borderColor: 'rgba(234,25,0,0.28)',
+    //     backgroundColor: 'rgba(234,25,0,0.5)',
+    //   },
+    //   {
+    //     borderColor: 'rgba(7,2,195,0.28)',
+    //     backgroundColor: 'rgba(121,0,225,0.5)',
+    //   },
 
-      {
-        borderColor: 'rgba(121,0,189,0.28)',
-        backgroundColor: 'rgba(121,0,189,0.5)',
-      },
-    ];
+    //   {
+    //     borderColor: 'rgba(204,195,45,0.28)',
+    //     backgroundColor: 'rgba(204,195,45,0.5)',
+    //   },
+
+    //   {
+    //     borderColor: 'rgba(121,0,189,0.28)',
+    //     backgroundColor: 'rgba(121,0,189,0.5)',
+    //   },
+    // ];
     this.options = {
       scales: {
         yAxes: [

@@ -1,9 +1,35 @@
-<div class="text-center">
-  <input class="form-control" type="file" (change)="onChange($event)" />
-  <div *ngIf="transactions$ | async as transactions">
-    <button style="float: left" (click)="parse(transactions)">parse</button>
-    <pre style="padding-top: 50px" id="csv">
-        {{ transactions }}
+<div style="margin-left: 30px; margin-right: 30px">
+  <h2>{{ heading }}</h2>
+  <p *ngIf="subHeading != ''">
+    {{ subHeading }}
+  </p>
+  <p>
+    For more infomation on the file format, please see
+    <a>csv format details.</a>
+  </p>
+  <button class="btn" mat-raised-button (click)="file.click()">
+    {{ btnTitle }}
+  </button>
+  <input
+    #file
+    style="visibility: hidden"
+    class="form-control"
+    type="file"
+    (change)="onChange($event)"
+  />
+
+  <div *ngIf="data">
+    <p>Does this look right to you?</p>
+    <pre id="csv">
+        {{ data }}
     </pre>
+    <button class="btn" mat-raised-button #upload (click)="parseBtn.click()">
+      Yup, looks good.
+    </button>
+    <button
+      #parseBtn
+      style="visibility: hidden"
+      (click)="emitToParseTransactions(data)"
+    ></button>
   </div>
 </div>

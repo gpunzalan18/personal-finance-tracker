@@ -23,10 +23,16 @@ export class ParserService {
     this.readTransactionsSubject.next(data);
   }
 
-  parse(data: string) {
-    let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\r\n');
-    // let headers: string[] = cleanUpData[0].split(',');
+  parseCategoriesForExpenses(data: string) {
+    console.log(data);
+  }
 
+  parseTransactions(data: string) {
+    let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
+    // let headers: string[] = cleanUpData[0].split(',');
+    typedTransactions.incomes = [];
+    typedTransactions.savings = [];
+    typedTransactions.expenses = [];
     let monthlyTransactionsMap: Map<
       string,
       Transaction[]

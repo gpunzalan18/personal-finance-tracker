@@ -1,14 +1,67 @@
-<div>
-  <app-file-upload></app-file-upload>
-  <div *ngIf="data.length > 0" class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <app-chart
-          type="line"
-          title="Monthly Expenses"
-          [data]="data"
-          [labels]="labels"
-        ></app-chart>
+<div class="page">
+  <app-file-upload
+    heading="Upload your bank account transactions."
+    subHeading=" Don't worry, I'm not going to store any of the information you provide. The
+    downside is that every time you visit this page, you'd have to re-upload. "
+    btnTitle="Upload File"
+    (uploadedData)="checkUploadedTransactionsData($event)"
+  ></app-file-upload>
+
+  <div style="margin-left: 30px" *ngIf="uploadedTransactionsData == true">
+    <h2>Would you like to upload a list of categories and key words?</h2>
+    <p>
+      This is what I'll use to categorize your expenses into different buckets.
+      If you decide not to, don't worry, I know some common key words that I can
+      use.
+    </p>
+
+    <button class="btn" mat-raised-button (click)="uploadCategories()">
+      Yes, I'd like that.
+    </button>
+    <button class="btn" mat-raised-button (click)="doNotUploadCategories()">
+      No, thanks.
+    </button>
+  </div>
+
+  <app-file-upload
+    *ngIf="uploadCategoriesData == true"
+    heading="Perfect, let's upload your file."
+    btnTitle="Upload File"
+    (uploadedData)="checkUploadedExpensesCategoryData($event)"
+  ></app-file-upload>
+
+  <div style="margin-left: 30px" *ngIf="data.length > 0">
+    <div
+      *ngIf="
+        (uploadedTransactionsData == true &&
+          uploadedExpensesCategoryData != undefined) ||
+        (uploadedTransactionsData == true && uploadCategoriesData == false)
+      "
+    >
+      <h2 style="margin-bottom: 30px; margin-top: 30px">
+        Nicely done! Here's what I made for you.
+      </h2>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <app-chart
+            type="line"
+            title="Monthly Income, Savings, and Expenses"
+            [data]="data"
+            [labels]="labels"
+            [colors]="colors1"
+          ></app-chart>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-md-12 col-sm-12">
+          <app-chart
+            type="line"
+            title="Expenses By Category"
+            [data]="data2"
+            [labels]="labels"
+            [colors]="colors2"
+          ></app-chart>
+        </div>
       </div>
     </div>
   </div>
