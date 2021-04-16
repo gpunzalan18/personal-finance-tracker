@@ -28,10 +28,6 @@ export class RegexService {
         regex: this.regexData['restaurant'],
       },
       {
-        category: ExpensesCategory.LEGAL,
-        regex: this.regexData['legal'],
-      },
-      {
         category: ExpensesCategory.GIVE,
         regex: this.regexData['give'],
       },
@@ -40,6 +36,16 @@ export class RegexService {
 
   getSavingsRegex(): RegExp {
     return new RegExp(this.regexData['savings']);
+  }
+
+  setExpensesCategoryRegex(categoryMap: Map<string, string[]>): void {
+    this.categoryRegexForExpenses = [];
+    categoryMap.forEach((value, key) => {
+      this.categoryRegexForExpenses.push({
+        category: key,
+        regex: `(${value.join('|')})`.toLocaleLowerCase(),
+      });
+    });
   }
 
   getExpensesCategory(description: string): ExpensesCategory {

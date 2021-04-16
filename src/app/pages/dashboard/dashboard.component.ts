@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ParserService } from '../../services/parser/parser.service';
 import { TypedTransactions } from '../../services/models/typed-transactions';
 import { Subject } from 'rxjs';
+import { RegexService } from 'src/app/services/regex/regex.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -63,7 +64,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   uploadCategoriesData: boolean | undefined = undefined;
   uploadedExpensesCategoryData: boolean | undefined = undefined;
   transactions$: Subject<string>;
-  constructor(private parserService: ParserService) {
+  constructor(
+    private parserService: ParserService,
+    private regexService: RegexService
+  ) {
     this.transactions$ = parserService.readTransactionsSubject;
   }
 
@@ -113,14 +117,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
     ];
   }
 
+  transactionDataStr: string = '';
+
   checkUploadedTransactionsData(data: any) {
     this.uploadedTransactionsData = true;
-    this.parserService.parseTransactions(data);
+    this.transactionDataStr = data;
   }
 
   checkUploadedExpensesCategoryData(data: any) {
     this.uploadedExpensesCategoryData = true;
-    this.parserService.parseCategoriesForExpenses(data);
+    let categoryString: string[] = data.split('\n');
+    let categoryMap: Map<string, any> = new Map<string, any>();
+    categoryString.forEach((categoryDataString) => {
+      let categoryData: string[] = categoryDataString.split(',');
+      categoryMap.set(categoryData[0], categoryData.slice(1));
+    });
+    this.regexService.setExpensesCategoryRegex(categoryMap);
+    this.parserService.parseTransactions(this.transactionDataStr);
   }
 
   uploadCategories() {
@@ -128,6 +141,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   doNotUploadCategories() {
     this.uploadCategoriesData = false;
+    this.parserService.parseTransactions(this.transactionDataStr);
   }
 
   ngOnDestroy() {

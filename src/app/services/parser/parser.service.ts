@@ -23,9 +23,15 @@ export class ParserService {
     this.readTransactionsSubject.next(data);
   }
 
-  parseCategoriesForExpenses(data: string) {
-    console.log(data);
-  }
+  // parseCategoriesForExpenses(data: string) {
+  //   let categoryString: string[] = data.split('\n');
+  //   let categoryMap: Map<string, any> = new Map<string, any>();
+  //   categoryString.forEach((categoryDataString) => {
+  //     let categoryData: string[] = categoryDataString.split(',');
+  //     categoryMap.set(categoryData[0], categoryData.slice(1));
+  //   });
+
+  // }
 
   parseTransactions(data: string) {
     let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
@@ -84,7 +90,6 @@ export class ParserService {
         transactionsList.push(updatedTransaction);
       }
     }
-
     return monthlyTransactionsMap;
   }
 
