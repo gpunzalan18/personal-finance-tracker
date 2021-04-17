@@ -4,6 +4,8 @@ import { TypedTransactions } from '../../services/models/typed-transactions';
 import { Subject } from 'rxjs';
 import { RegexService } from 'src/app/services/regex/regex.service';
 import { StoreService } from 'src/app/services/store/store.service';
+import { Color } from 'src/app/services/models/view/color.enum';
+import { ColorService } from 'src/app/services/view/color/color.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,37 +15,8 @@ import { StoreService } from 'src/app/services/store/store.service';
 export class DashboardComponent implements OnInit, OnDestroy {
   data: any[] = [];
   data2: any[] = [];
-  colors1 = [
-    {
-      borderColor: 'rgba(24,120,6,0.28)',
-      backgroundColor: 'rgba(24,120,76,0.5)',
-    },
-    {
-      borderColor: 'rgba(121,123,189,0.28)',
-      backgroundColor: 'rgba(121,123,189,0.5)',
-    },
-    {
-      borderColor: 'rgba(234,25,0,0.28)',
-      backgroundColor: 'rgba(234,25,0,0.5)',
-    },
-  ];
-
-  colors2 = [
-    {
-      borderColor: 'rgba(121,0,225,0.5)',
-      backgroundColor: 'rgba(121,0,225,0.5)',
-    },
-
-    {
-      borderColor: 'rgba(204,195,45,0.28)',
-      backgroundColor: 'rgba(204,195,45,0.5)',
-    },
-
-    {
-      borderColor: 'rgba(221,196,189,0.5)',
-      backgroundColor: 'rgba(221,196,189,0.5)',
-    },
-  ];
+  firstChartColors = [];
+  secondChartColors = [];
   labels: string[] = [];
   uploadedTransactionsData: boolean | undefined = undefined;
   uploadCategoriesData: boolean | undefined = undefined;
@@ -52,12 +25,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private parserService: ParserService,
     private regexService: RegexService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private colorService: ColorService
   ) {
     this.transactions$ = parserService.readTransactionsSubject;
   }
 
   ngOnInit(): void {
+    this.firstChartColors = this.colorService.getColorSet([
+      Color.GREEN,
+      Color.PURPLE,
+      Color.RED,
+    ]);
+    this.secondChartColors = this.colorService.getColorSet(
+      Object.values(Color)
+    );
+    console.log(Object.values(Color));
     this.parserService.parseTransactionsSubject.subscribe(
       (data: TypedTransactions) => {
         let incomesData: number[] = [];
@@ -132,14 +115,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   uploadCategories() {
     this.data2 = [];
-    this.colors2 = [];
     this.storeService.categories = [];
     this.storeService.categorizedTransactions = [];
     this.uploadCategoriesData = true;
   }
   doNotUploadCategories() {
     this.data2 = [];
-    this.colors2 = []
     this.uploadCategoriesData = false;
     this.storeService.categories = this.regexService.getDefaultCategories();
     this.storeService.categorizedTransactions = [];
