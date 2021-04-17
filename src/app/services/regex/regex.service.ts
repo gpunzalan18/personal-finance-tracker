@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ExpensesCategory } from '../models/expenses-categoy.enum';
+import { StoreService } from '../store/store.service';
 import * as data from './regex.json';
 
 @Injectable({
@@ -7,9 +8,16 @@ import * as data from './regex.json';
 })
 export class RegexService {
   regexData: any = data;
-  categoryRegexForExpenses: any[];
-  constructor() {
+  public categoryRegexForExpenses: any[];
+  constructor(private storeService: StoreService) {
     this.regexData = this.regexData.default;
+    this.storeService.categories = [
+      'bills',
+      'grocery',
+      'entertainment',
+      'restaurant',
+      'other'
+    ];
     this.categoryRegexForExpenses = [
       {
         category: ExpensesCategory.BILLS,
@@ -27,10 +35,6 @@ export class RegexService {
         category: ExpensesCategory.RESTAURANT,
         regex: this.regexData['restaurant'],
       },
-      {
-        category: ExpensesCategory.GIVE,
-        regex: this.regexData['give'],
-      },
     ];
   }
 
@@ -40,10 +44,12 @@ export class RegexService {
 
   setExpensesCategoryRegex(categoryMap: Map<string, string[]>): void {
     this.categoryRegexForExpenses = [];
-    categoryMap.forEach((value, key) => {
+    this.storeService.categorizedTransactions = [];
+    categoryMap.forEach((regexList, category) => {
+      this.storeService.categories.push(category);
       this.categoryRegexForExpenses.push({
-        category: key,
-        regex: `(${value.join('|')})`.toLocaleLowerCase(),
+        category: category,
+        regex: `(${regexList.join('|')})`.toLocaleLowerCase(),
       });
     });
   }

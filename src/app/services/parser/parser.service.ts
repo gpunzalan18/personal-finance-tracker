@@ -4,8 +4,8 @@ import { Subject } from 'rxjs';
 import { Transaction } from '../models/transaction';
 import { TransactionType } from '../models/transaction-type.enum';
 import { RegexService } from '../regex/regex.service';
+import { StoreService } from '../store/store.service';
 import { MonthlyTransactions } from '../models/monthly-transactions';
-import { typedTransactions } from '../models/typed-transactions';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,10 @@ export class ParserService {
   readTransactionsSubject: Subject<any>;
   parseTransactionsSubject: Subject<any>;
 
-  constructor(private regexService: RegexService) {
+  constructor(
+    private regexService: RegexService,
+    private storeService: StoreService
+  ) {
     this.readTransactionsSubject = new Subject();
     this.parseTransactionsSubject = new Subject();
   }
@@ -23,47 +26,55 @@ export class ParserService {
     this.readTransactionsSubject.next(data);
   }
 
-  // parseCategoriesForExpenses(data: string) {
-  //   let categoryString: string[] = data.split('\n');
-  //   let categoryMap: Map<string, any> = new Map<string, any>();
-  //   categoryString.forEach((categoryDataString) => {
-  //     let categoryData: string[] = categoryDataString.split(',');
-  //     categoryMap.set(categoryData[0], categoryData.slice(1));
-  //   });
-
-  // }
-
   parseTransactions(data: string) {
     let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
     // let headers: string[] = cleanUpData[0].split(',');
-    typedTransactions.incomes = [];
-    typedTransactions.savings = [];
-    typedTransactions.expenses = [];
+    this.storeService.resetStore();
     let monthlyTransactionsMap: Map<
       string,
       Transaction[]
     > = this.buildMonthlyTransactions(cleanUpData);
 
     monthlyTransactionsMap.forEach((transactions, key) => {
-      typedTransactions.incomes.push(
+      this.storeService.typedTransactions.incomes.push(
         this.getTransactionsByType(key, transactions, TransactionType.INCOME)
       );
-      typedTransactions.savings.push(
+      this.storeService.typedTransactions.savings?.push(
         this.getTransactionsByType(key, transactions, TransactionType.SAVINGS)
       );
-      typedTransactions.expenses.push(
+      this.storeService.typedTransactions.expenses.push(
         this.getTransactionsByType(key, transactions, TransactionType.EXPENSES)
       );
     });
+    this.buildCategorizedExpenses(this.storeService.typedTransactions.expenses);
 
-    this.parseTransactionsSubject.next(typedTransactions);
+    this.parseTransactionsSubject.next(this.storeService.typedTransactions);
+  }
+
+  public buildCategorizedExpenses(expenses: MonthlyTransactions[]) {
+    expenses.forEach((mt) => {
+      this.storeService.categories.forEach((category) => {
+        let totalAmount: number = 0;
+        mt.transactions.forEach((t) => {
+          if (t.category == category) {
+            totalAmount += t.amount;
+          }
+        });
+        this.storeService.addAmountToCategorizedTransactions(
+          category,
+          totalAmount
+        );
+      });
+    });
+    console.log(this.storeService.categories);
+    console.log(this.storeService.categorizedTransactions);
   }
 
   private buildMonthlyTransactions(data: any): Map<string, Transaction[]> {
     let monthlyTransactionsMap: Map<string, Transaction[]> = new Map();
     for (let i = 1; i < data.length; i++) {
       let transaction: string[] = data[i].replace(/"/g, '').split(',');
-      let amount: number = parseInt(transaction[2]);
+      let amount: number = parseInt(transaction[2].replace(/$/g, ''));
       let transactionType: TransactionType = TransactionType.INCOME;
 
       if (amount < 0) {
@@ -77,12 +88,15 @@ export class ParserService {
       let monthYearKey = `${date.substr(0, 2)}_${date.substr(6, 4)}`;
 
       let transactionsList: any = monthlyTransactionsMap.get(monthYearKey);
+      const category: string = this.regexService.getExpensesCategory(
+        transaction[1]
+      );
       let updatedTransaction: Transaction = new Transaction(
         date,
         transaction[1],
-        Math.abs(parseInt(transaction[2])),
+        Math.abs(amount),
         transactionType,
-        this.regexService.getExpensesCategory(transaction[1])
+        category
       );
       if (transactionsList == undefined) {
         monthlyTransactionsMap.set(monthYearKey, [updatedTransaction]);
@@ -90,6 +104,8 @@ export class ParserService {
         transactionsList.push(updatedTransaction);
       }
     }
+
+    console.log(monthlyTransactionsMap);
     return monthlyTransactionsMap;
   }
 

@@ -2,9 +2,10 @@ import { MonthlyTransactions } from './monthly-transactions';
 
 export class TypedTransactions {
   incomes: MonthlyTransactions[] = [];
-  savings: MonthlyTransactions[] = [];
   expenses: MonthlyTransactions[] = [];
+  savings: MonthlyTransactions[] = [];
+
   constructor() {}
 }
 
-export const typedTransactions: TypedTransactions = new TypedTransactions();
+// export const typedTransactions: TypedTransactions = new TypedTransactions();

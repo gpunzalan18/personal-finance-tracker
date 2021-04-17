@@ -7,6 +7,6 @@ export class Transaction {
     public readonly description: string,
     public readonly amount: number,
     public readonly type: TransactionType,
-    public readonly category: ExpensesCategory
+    public readonly category: string
   ) {}
 }

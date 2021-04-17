@@ -3,6 +3,7 @@ import { ParserService } from '../../services/parser/parser.service';
 import { TypedTransactions } from '../../services/models/typed-transactions';
 import { Subject } from 'rxjs';
 import { RegexService } from 'src/app/services/regex/regex.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,23 +12,7 @@ import { RegexService } from 'src/app/services/regex/regex.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   data: any[] = [];
-  data2: any[] = [
-    {
-      data: [100, 234, 90, 10],
-      label: 'dining',
-      fill: false,
-    },
-    {
-      data: [0, 24, 190, 100],
-      label: 'amazon',
-      fill: false,
-    },
-    {
-      data: [460, 324, 10, 200],
-      label: 'other',
-      fill: false,
-    },
-  ];
+  data2: any[] = [];
   colors1 = [
     {
       borderColor: 'rgba(24,120,6,0.28)',
@@ -66,7 +51,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   transactions$: Subject<string>;
   constructor(
     private parserService: ParserService,
-    private regexService: RegexService
+    private regexService: RegexService,
+    private storeService: StoreService
   ) {
     this.transactions$ = parserService.readTransactionsSubject;
   }
@@ -82,7 +68,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           incomesData.push(mt.total);
           this.labels.push(mt.title);
         });
-        data.savings.forEach((mt) => {
+        data.savings?.forEach((mt) => {
           savingsData.push(mt.total);
         });
         data.expenses.forEach((mt) => {
@@ -115,6 +101,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         fill: false,
       },
     ];
+    this.storeService.categories.forEach((category, index) => {
+      this.data2.push({
+        data: this.storeService.categorizedTransactions[index],
+        label: category,
+        fill: false,
+      });
+    });
   }
 
   transactionDataStr: string = '';
