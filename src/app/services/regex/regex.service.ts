@@ -8,16 +8,17 @@ import * as data from './regex.json';
 })
 export class RegexService {
   regexData: any = data;
+  defaultCategories: string[] = [
+    'bills',
+    'grocery',
+    'entertainment',
+    'restaurant',
+    'other',
+  ];
   public categoryRegexForExpenses: any[];
   constructor(private storeService: StoreService) {
     this.regexData = this.regexData.default;
-    this.storeService.categories = [
-      'bills',
-      'grocery',
-      'entertainment',
-      'restaurant',
-      'other'
-    ];
+    this.storeService.categories = this.defaultCategories;
     this.categoryRegexForExpenses = [
       {
         category: ExpensesCategory.BILLS,
@@ -38,6 +39,10 @@ export class RegexService {
     ];
   }
 
+  getDefaultCategories(): string[] {
+    return this.defaultCategories;
+  }
+
   getSavingsRegex(): RegExp {
     return new RegExp(this.regexData['savings']);
   }
@@ -45,6 +50,7 @@ export class RegexService {
   setExpensesCategoryRegex(categoryMap: Map<string, string[]>): void {
     this.categoryRegexForExpenses = [];
     this.storeService.categorizedTransactions = [];
+    this.storeService.categories = [];
     categoryMap.forEach((regexList, category) => {
       this.storeService.categories.push(category);
       this.categoryRegexForExpenses.push({

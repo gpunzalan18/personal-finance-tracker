@@ -47,27 +47,25 @@ export class ParserService {
       );
     });
     this.buildCategorizedExpenses(this.storeService.typedTransactions.expenses);
-
     this.parseTransactionsSubject.next(this.storeService.typedTransactions);
   }
 
   public buildCategorizedExpenses(expenses: MonthlyTransactions[]) {
-    expenses.forEach((mt) => {
-      this.storeService.categories.forEach((category) => {
-        let totalAmount: number = 0;
-        mt.transactions.forEach((t) => {
-          if (t.category == category) {
-            totalAmount += t.amount;
-          }
-        });
-        this.storeService.addAmountToCategorizedTransactions(
-          category,
-          totalAmount
-        );
+    expenses.forEach((mt, monthIndex) => {
+      let map: any = new Map<string, number>();
+      mt.transactions.forEach((t) => {
+        if (map.get(t.category)) {
+          let val: number = map.get(t.category) + t.amount;
+          map.set(t.category, val);
+        } else {
+          map.set(t.category, t.amount);
+        }
+        this.storeService.addAmountToCategorizedTransactions(map, monthIndex);
       });
+      console.log(map);
     });
-    console.log(this.storeService.categories);
-    console.log(this.storeService.categorizedTransactions);
+    // console.log(this.storeService.categories);
+    // console.log(this.storeService.categorizedTransactions);
   }
 
   private buildMonthlyTransactions(data: any): Map<string, Transaction[]> {
@@ -104,8 +102,6 @@ export class ParserService {
         transactionsList.push(updatedTransaction);
       }
     }
-
-    console.log(monthlyTransactionsMap);
     return monthlyTransactionsMap;
   }
 

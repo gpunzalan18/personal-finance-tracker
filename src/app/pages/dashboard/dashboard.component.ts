@@ -101,6 +101,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         fill: false,
       },
     ];
+    console.log('dashboard', this.storeService.categories);
     this.storeService.categories.forEach((category, index) => {
       this.data2.push({
         data: this.storeService.categorizedTransactions[index],
@@ -130,10 +131,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   uploadCategories() {
+    this.data2 = [];
+    this.colors2 = [];
+    this.storeService.categories = [];
+    this.storeService.categorizedTransactions = [];
     this.uploadCategoriesData = true;
   }
   doNotUploadCategories() {
+    this.data2 = [];
+    this.colors2 = []
     this.uploadCategoriesData = false;
+    this.storeService.categories = this.regexService.getDefaultCategories();
+    this.storeService.categorizedTransactions = [];
     this.parserService.parseTransactions(this.transactionDataStr);
   }
 
