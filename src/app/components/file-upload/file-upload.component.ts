@@ -17,6 +17,7 @@ export class FileUploadComponent implements OnInit {
     Transaction[]
   >();
 
+  disabled = false;
   data: any;
   constructor(private parserService: ParserService) {}
 
@@ -33,5 +34,6 @@ export class FileUploadComponent implements OnInit {
 
   emitToParseTransactions(data: any) {
     this.uploadedData.emit(data);
+    this.disabled = true;
   }
 }

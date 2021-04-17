@@ -4,5 +4,8 @@
 }
 
 .btn {
+  margin-bottom: 15px;
   margin-right: 10px;
+  background-color: whitesmoke;
+  color: #202022;
 }

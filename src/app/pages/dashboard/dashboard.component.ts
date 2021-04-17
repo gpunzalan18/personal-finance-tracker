@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   uploadCategoriesData: boolean | undefined = undefined;
   uploadedExpensesCategoryData: boolean | undefined = undefined;
   transactions$: Subject<string>;
+  isChoiceDisabled: boolean = false;
   constructor(
     private parserService: ParserService,
     private regexService: RegexService,
@@ -111,6 +112,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     this.regexService.setExpensesCategoryRegex(categoryMap);
     this.parserService.parseTransactions(this.transactionDataStr);
+    this.isChoiceDisabled = true;
   }
 
   uploadCategories() {

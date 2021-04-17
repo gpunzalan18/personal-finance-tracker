@@ -1,7 +1,7 @@
 <div class="page">
   <app-file-upload
     heading="Upload your bank account transactions."
-    subHeading=" Don't worry, I'm not going to store any of the information you provide. The
+    subHeading="I'm not going to store any of the information you provide. The
     downside is that every time you visit this page, you'd have to re-upload. "
     btnTitle="Upload File"
     (uploadedData)="checkUploadedTransactionsData($event)"
@@ -11,14 +11,23 @@
     <h2>Would you like to upload a list of categories and key words?</h2>
     <p>
       This is what I'll use to categorize your expenses into different buckets.
-      If you decide not to, don't worry, I know some common key words that I can
-      use.
+      If you decide not to, I know some common key words that I can use.
     </p>
 
-    <button class="btn" mat-raised-button (click)="uploadCategories()">
+    <button
+      class="btn"
+      [disabled]="isChoiceDisabled"
+      mat-raised-button
+      (click)="uploadCategories()"
+    >
       Yes, I'd like that.
     </button>
-    <button class="btn" mat-raised-button (click)="doNotUploadCategories()">
+    <button
+      class="btn"
+      [disabled]="isChoiceDisabled"
+      mat-raised-button
+      (click)="doNotUploadCategories()"
+    >
       No, thanks.
     </button>
   </div>

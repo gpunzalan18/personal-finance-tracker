@@ -9,9 +9,11 @@
 }
 
 .btn {
-  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: whitesmoke;
+  color: #202022;
 }
 
 .btn:hover {
-  box-shadow: 1px 1px 5px;
+  box-shadow: 1px 1px 8px gray;
 }

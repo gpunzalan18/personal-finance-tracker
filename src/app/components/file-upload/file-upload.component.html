@@ -3,14 +3,19 @@
   <p *ngIf="subHeading != ''">
     {{ subHeading }}
   </p>
-  <p>
-    For more infomation on the file format, please see
-    <a>csv format details.</a>
-  </p>
-  <button class="btn" mat-raised-button (click)="file.click()">
+  <button
+    [disabled]="disabled"
+    class="btn"
+    mat-raised-button
+    (click)="file.click()"
+  >
     {{ btnTitle }}
   </button>
+  <em *ngIf="disabled" style="margin-left: 10px; font-size: smaller"
+    >If you'd like to upload a different file, reload the page.
+  </em>
   <input
+    [disabled]="disabled"
     #file
     style="visibility: hidden"
     class="form-control"
@@ -19,17 +24,19 @@
   />
 
   <div *ngIf="data">
-    <p>Does this look right to you?</p>
+    <div *ngIf="!disabled">
+      <p>Does this look right to you?</p>
+      <button class="btn" mat-raised-button #upload (click)="parseBtn.click()">
+        Yup, looks good.
+      </button>
+      <button
+        #parseBtn
+        style="visibility: hidden"
+        (click)="emitToParseTransactions(data)"
+      ></button>
+    </div>
     <pre id="csv">
         {{ data }}
     </pre>
-    <button class="btn" mat-raised-button #upload (click)="parseBtn.click()">
-      Yup, looks good.
-    </button>
-    <button
-      #parseBtn
-      style="visibility: hidden"
-      (click)="emitToParseTransactions(data)"
-    ></button>
   </div>
 </div>
