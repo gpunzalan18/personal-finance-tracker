@@ -42,6 +42,7 @@ export class FileUploadComponent implements OnInit {
       this.data = this.reader.result;
     };
     this.reader.readAsText(this.file);
+    event.target.value = '';
   }
 
   emitToParseData() {
