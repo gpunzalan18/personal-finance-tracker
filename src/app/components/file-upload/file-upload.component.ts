@@ -22,8 +22,11 @@ export class FileUploadComponent implements OnInit {
 
   disabled = false;
   data: any;
+  uploadedCSVData: any;
   useDefault = false;
   default: any;
+  file: any;
+  reader = new FileReader();
   constructor(private parserService: ParserService) {}
 
   ngOnInit(): void {
@@ -31,21 +34,25 @@ export class FileUploadComponent implements OnInit {
   }
 
   onChange(event: any) {
-    var reader = new FileReader();
-    reader.onload = () => {
-      this.parserService.read(reader.result);
-      this.data = reader.result;
+    this.file = event.target.files[0];
+    this.parserService.read(this.reader.result);
+    this.data = this.reader.result;
+    this.reader.onload = () => {
+      this.parserService.read(this.reader.result);
+      this.data = this.reader.result;
     };
-    reader.readAsText(event.target.files[0]);
+    this.reader.readAsText(this.file);
   }
 
-  emitToParseData(data: any) {
-    this.uploadedData.emit(data);
+  emitToParseData() {
+    this.uploadedData.emit(this.data);
     this.disabled = true;
   }
 
   useDefaultData() {
     this.useDefault = true;
+    this.data = undefined;
+    console.log(document.getElementById('file-upload'));
   }
 
   emitToUseDefaultData() {

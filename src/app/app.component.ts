@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Personal Finance Tracker';
+
+  reload() {
+    window.location.reload();
+  }
 }

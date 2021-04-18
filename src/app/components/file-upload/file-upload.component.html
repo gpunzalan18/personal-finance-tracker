@@ -1,7 +1,9 @@
 <div style="margin-left: 50px">
   <h2 style="margin-left: -28px">{{ heading }}</h2>
   <p *ngIf="subHeading != ''">
-    {{ subHeading }}
+    {{ subHeading }} You can upload a .csv file that follows a specific format.
+    To see what that looks like, <span><em>click Demo</em></span
+    >.
   </p>
   <button
     [disabled]="disabled"
@@ -9,7 +11,7 @@
     mat-raised-button
     (click)="file.click()"
   >
-    {{ btnTitle }}
+    Yes, I'd like that.
   </button>
   <button
     [disabled]="disabled"
@@ -17,31 +19,32 @@
     mat-raised-button
     (click)="useDefaultData()"
   >
-    Use Test Data
+    Demo
   </button>
   <em *ngIf="disabled" style="margin-left: 10px; font-size: smaller"
     >If you'd like to upload a file, reload the page and start again.
   </em>
   <input
     [disabled]="disabled"
+    id="file-upload"
     #file
     style="visibility: hidden"
     class="form-control"
     type="file"
+    accept=".csv"
     (change)="onChange($event)"
   />
   <div *ngIf="!data && useDefault == true">
     <div>
-      <strong *ngIf="!disabled">Does this look good to you?</strong>
+      <strong *ngIf="!disabled">Do you want to use this demo data?</strong>
       <p>{{ dataCaption }}</p>
       <button
         *ngIf="!disabled"
         class="btn"
         mat-raised-button
-        #upload
         (click)="parseBtn.click()"
       >
-        Yes, it looks good.
+        That sounds good!
       </button>
       <button
         #parseBtn
@@ -65,15 +68,15 @@
         #upload
         (click)="parseBtn.click()"
       >
-        Yup, looks good.
+        yes, it looks good.
       </button>
       <button
         #parseBtn
         style="visibility: hidden"
-        (click)="emitToParseData(data)"
+        (click)="emitToParseData()"
       ></button>
     </div>
-    <pre id="csv">
+    <pre id="csv" style="padding-top: 20px; padding-bottom: 20px">
         {{ data }}
     </pre>
   </div>

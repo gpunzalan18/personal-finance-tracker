@@ -1,19 +1,33 @@
 <div class="page">
+  <div style="margin-left: 25px">
+    <span
+      ><strong>Personal Finance Tracker (PFT)</strong> is a simple tool to
+      understand your income and expenses and provide you with a wholistic
+      picture of your finances.
+    </span>
+    <br />
+    <br />
+    <p>
+      Please note that PFT will not store any of the information you provide.
+      The downside is that every time you visit, you'd have to provide your data
+      again. Alternatively, if you simply want to explore what I can do, PFT
+      will give you an option to use a demo data along the way.
+    </p>
+  </div>
   <app-file-upload
-    heading="1. Upload your bank account transactions."
-    subHeading="I will not store any of the information you provide. The
-    downside is that you'd have to re-upload your data every time you visit. Alternatively, you can also use a test data to explore what I can do."
+    heading="1. Would you like to upload your bank transactions?"
+    subHeading=" "
     btnTitle="Upload File"
     (uploadedData)="checkUploadedTransactionsData($event)"
     [defaultDataStr]="defaultTransactionDataStr"
     (defaultData)="useDefaultData()"
-    dataCaption="Notice that every transaction consists of a date, a description, and an amount. Each transaction must follow this order so that I can understand the data. Amounts that are greater than zero are part of your income and those that are less are considered expenses.
-      If you'd like to upload your own .csv file, make sure to follow the format shown below. Any additional headers will be ignored."
+    dataCaption="Notice that every row is a transaction that consists of a date, a description, and an amount. Amounts that are greater than zero are part of your income and those that are less are considered expenses.
+      If you'd like to upload your data, make sure to follow the format shown below. Each transaction must follow this format so that I can understand the data. Any additional headers will be ignored."
   ></app-file-upload>
 
   <app-file-upload
     *ngIf="uploadedTransactionsData == true"
-    heading="2. Upload a list of categories and keywords."
+    heading="2. Would you like to upload a list of categories and keywords?"
     subHeading="This is what I'll use to categorize your expenses into different buckets."
     btnTitle="Upload File"
     (uploadedData)="checkUploadedExpensesCategoryData($event)"
@@ -35,11 +49,20 @@
       <h2 style="margin-bottom: 30px; margin-top: 30px">
         3. Nicely done! Here's what I made for you.
       </h2>
+      <p style="margin-top: -20px; margin-left: 30px; margin-right: 20px">
+        The interactive visualizations shown below represent a picture of your
+        finances every month. You can click through the legend and see how it
+        changes your charts!
+      </p>
+      <p style="margin-top: -10px; margin-left: 30px; margin-right: 20px">
+        Keep in mind that these are noncummulative&#8212;each month's data is
+        completely independent from each other.
+      </p>
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <app-chart
             type="line"
-            title="Monthly Income, Savings, and Expenses"
+            [title]="firstChartTitle"
             [data]="data"
             [labels]="labels"
             [colors]="firstChartColors"

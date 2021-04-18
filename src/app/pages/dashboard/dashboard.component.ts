@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   data: any[] = [];
   data2: any[] = [];
   firstChartColors = [];
+  firstChartTitle = 'Monthly Income';
   secondChartColors = [];
   labels: string[] = [];
   uploadedTransactionsData: boolean | undefined = undefined;
@@ -85,7 +86,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         data.incomes.forEach((mt) => {
           incomesData.push(mt.total);
           this.labels.push(mt.title);
-          console.log(mt);
         });
         data.savings?.forEach((mt) => {
           savingsData.push(mt.total);
@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.data = [
       {
         data: incomesData,
-        label: 'incomes',
+        label: 'income',
         fill: false,
       },
     ];
@@ -117,12 +117,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
         label: 'savings',
         fill: false,
       });
+      this.firstChartTitle += ', Savings, ';
     }
     this.data.push({
       data: expensesData,
       label: 'expenses',
       fill: false,
     });
+    this.firstChartTitle += ' and Expenses';
     this.storeService.categories.forEach((category, index) => {
       this.data2.push({
         data: this.storeService.categorizedTransactions[index],

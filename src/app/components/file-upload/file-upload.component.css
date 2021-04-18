@@ -22,3 +22,7 @@
 .btn:hover {
   box-shadow: 1px 1px 8px gray;
 }
+
+.btn:disabled {
+  cursor: not-allowed;
+}
