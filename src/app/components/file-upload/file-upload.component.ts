@@ -13,15 +13,23 @@ export class FileUploadComponent implements OnInit {
   @Input('heading') heading: string = '';
   @Input('subHeading') subHeading: string = '';
   @Input('btnTitle') btnTitle: string = '';
+  @Input('defaultDataStr') defaultDataStr: string = '';
+  @Input() dataCaption: string = '';
   @Output() uploadedData: EventEmitter<Transaction[]> = new EventEmitter<
     Transaction[]
   >();
+  @Output() defaultData: EventEmitter<Transaction[]> = new EventEmitter();
 
   disabled = false;
   data: any;
+  useDefault = false;
+  default: any;
   constructor(private parserService: ParserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.default = `\n${this.defaultDataStr}`;
+    console.log(this.defaultDataStr);
+  }
 
   onChange(event: any) {
     var reader = new FileReader();
@@ -32,8 +40,17 @@ export class FileUploadComponent implements OnInit {
     reader.readAsText(event.target.files[0]);
   }
 
-  emitToParseTransactions(data: any) {
+  emitToParseData(data: any) {
     this.uploadedData.emit(data);
+    this.disabled = true;
+  }
+
+  useDefaultData() {
+    this.useDefault = true;
+  }
+
+  emitToUseDefaultData() {
+    this.defaultData.emit();
     this.disabled = true;
   }
 }

@@ -62,10 +62,7 @@ export class ParserService {
         }
         this.storeService.addAmountToCategorizedTransactions(map, monthIndex);
       });
-      console.log(map);
     });
-    // console.log(this.storeService.categories);
-    // console.log(this.storeService.categorizedTransactions);
   }
 
   private buildMonthlyTransactions(data: any): Map<string, Transaction[]> {

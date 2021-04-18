@@ -17,7 +17,6 @@ export class ColorService {
         backgroundColor: formattedColor,
       });
     });
-    console.log(colors);
     return colors;
   }
 }

@@ -3,6 +3,9 @@
   color: white;
   padding: 5px;
   white-space: pre-line;
+  padding-left: 24px;
+  padding-right: 24px;
+  overflow-x: scroll;
 }
 
 .hidden {
@@ -10,7 +13,8 @@
 }
 
 .btn {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-right: 16px;
   background-color: whitesmoke;
   color: #202022;
 }

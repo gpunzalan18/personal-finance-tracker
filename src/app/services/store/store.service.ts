@@ -33,21 +33,5 @@ export class StoreService {
         this.categorizedTransactions[categoryIndex][monthIndex] = categoryAmount;
       }
     });
-
-    // if (this.categorizedTransactions[index] == undefined) {
-    //   this.categorizedTransactions.push([amount]);
-    // } else {
-    //   if (this.categorizedTransactions[index][monthIndex] == undefined) {
-    //     for (let i = 0; i <= monthIndex; i++) {
-    //       if (this.categorizedTransactions[index][i] == undefined) {
-    //         this.categorizedTransactions[index].push(0);
-    //       }
-    //     }
-    //     this.categorizedTransactions[index].push(amount);
-    //   } else {
-    //     this.categorizedTransactions[index][monthIndex] += amount;
-    //   }
-    // }
-    // console.log(this.categorizedTransactions);
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ExpensesCategory } from '../models/expenses-categoy.enum';
 import { StoreService } from '../store/store.service';
-import * as data from './regex.json';
+import * as data from '../store/regex.json';
 
 @Injectable({
   providedIn: 'root',
@@ -22,19 +22,23 @@ export class RegexService {
     this.categoryRegexForExpenses = [
       {
         category: ExpensesCategory.BILLS,
-        regex: this.regexData['bills'],
+        regex: `(${this.regexData['bills'].replace(/,/g, '|')})`,
       },
       {
         category: ExpensesCategory.GROCERY,
-        regex: this.regexData['grocery'],
+        regex: `(${this.regexData['grocery'].replace(/,/g, '|')})`,
       },
       {
         category: ExpensesCategory.ENTERTAINMENT,
-        regex: this.regexData['entertainment'],
+        regex: `(${this.regexData['entertainment'].replace(/,/g, '|')})`,
       },
       {
         category: ExpensesCategory.RESTAURANT,
-        regex: this.regexData['restaurant'],
+        regex: `(${this.regexData['restaurant'].replace(/,/g, '|')})`,
+      },
+      {
+        category: ExpensesCategory.SAVINGS,
+        regex: `(${this.regexData['restaurant'].replace(/,/g, '|')})`,
       },
     ];
   }
@@ -44,7 +48,7 @@ export class RegexService {
   }
 
   getSavingsRegex(): RegExp {
-    return new RegExp(this.regexData['savings']);
+    return new RegExp('savings|sav');
   }
 
   setExpensesCategoryRegex(categoryMap: Map<string, string[]>): void {

@@ -1,8 +1,0 @@
-{
-  "restaurant": "(mcdonald|popeyes|donut|sweet|subway|resturant|king|domino|tea|tacos|panda|poke|ihop)",
-  "grocery": "(hannaford|market|mart|super|giant|king|target|wholefds)",
-  "entertainment": "(disney|hulu|spotify|roku|amazon|amzn|netflix|prime|movie|fandango)",
-  "savings": "(transfer to sav|savings|sav)",
-  "give": "(union|donate)",
-  "bills": "(bellport|rent|phone|bill|at&t|geico|car|aaa)"
-}
