@@ -1,7 +1,7 @@
 <div style="margin-left: 50px">
   <h2 style="margin-left: -28px">{{ heading }}</h2>
-  <p *ngIf="subHeading != ''">
-    {{ subHeading }} If you do not want to upload your information, click
+  <p>
+    {{ subHeading }} If you do not want to upload your information or would like to see the format, click
     <span> <em>Demo</em> </span>.
   </p>
   <button
@@ -33,50 +33,20 @@
     accept=".csv"
     (change)="onChange($event)"
   />
-  <div *ngIf="!data && useDefault == true">
-    <div>
-      <strong *ngIf="!disabled">Do you want to use this demo data?</strong>
-      <p>{{ dataCaption }}</p>
-      <button
-        *ngIf="!disabled"
-        class="btn"
-        mat-raised-button
-        (click)="parseBtn.click()"
-      >
-        Let's use this data.
-      </button>
-      <button
-        #parseBtn
-        style="visibility: hidden"
-        (click)="emitToUseDefaultData()"
-      ></button>
-    </div>
-
+  <div *ngIf="step == 2">
+    <strong *ngIf="!disabled">{{ getConfirmationQuestion() }}</strong>
+    <p>{{ dataCaption }}</p>
+    <button
+      *ngIf="!disabled"
+      class="btn"
+      mat-raised-button
+      (click)="emitBtn.click()"
+    >
+      Let's use this data.
+    </button>
+    <button #emitBtn style="visibility: hidden" (click)="emitData()"></button>
     <pre id="csv">
-        {{ default }}
-    </pre>
-  </div>
-  <div *ngIf="data">
-    <div>
-      <strong *ngIf="!disabled">Does this look good to you?</strong>
-      <p>{{ dataCaption }}</p>
-      <button
-        *ngIf="!disabled"
-        class="btn"
-        mat-raised-button
-        #upload
-        (click)="parseBtn.click()"
-      >
-        Let's use this data.
-      </button>
-      <button
-        #parseBtn
-        style="visibility: hidden"
-        (click)="emitToParseData()"
-      ></button>
-    </div>
-    <pre id="csv" style="padding-top: 20px; padding-bottom: 20px">
-        {{ data }}
+        {{ dataString }}
     </pre>
   </div>
 </div>

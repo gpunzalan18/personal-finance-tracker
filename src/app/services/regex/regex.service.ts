@@ -8,17 +8,11 @@ import * as data from '../store/regex.json';
 })
 export class RegexService {
   regexData: any = data;
-  defaultCategories: string[] = [
-    'bills',
-    'grocery',
-    'entertainment',
-    'restaurant',
-    'other',
-  ];
+
   public categoryRegexForExpenses: any[];
   constructor(private storeService: StoreService) {
     this.regexData = this.regexData.default;
-    this.storeService.categories = this.defaultCategories;
+    this.storeService.categories = this.storeService.getDefaultCategories();
     this.categoryRegexForExpenses = [
       {
         category: ExpensesCategory.BILLS,
@@ -41,10 +35,6 @@ export class RegexService {
         regex: `(${this.regexData['restaurant'].replace(/,/g, '|')})`,
       },
     ];
-  }
-
-  getDefaultCategories(): string[] {
-    return this.defaultCategories;
   }
 
   getSavingsRegex(): RegExp {

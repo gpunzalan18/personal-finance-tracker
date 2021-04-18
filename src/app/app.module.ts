@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { InfoComponent } from './pages/info/info.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +18,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     FileUploadComponent,
     DashboardComponent,
     ChartComponent,
-    InfoComponent,
   ],
   imports: [
     MaterialModule,

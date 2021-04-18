@@ -5,22 +5,19 @@
       understand your income and expenses and provide you with a wholistic
       picture of your finances.
     </span>
-    <br />
-    <br />
-    <p>
+
+    <p style="margin-top: 20px">
       Please note that PFT will not store any of the information you provide.
-      The downside is that every time you visit, you'd have to provide your data
-      again. Alternatively, if you simply want to explore, PFT will give you an
-      option to use a demo data along the way.
+      The downside is that every time you visit, you will have to provide your
+      data again. Alternatively, if you simply want to explore, PFT will give
+      you an option to use a demo data along the way.
     </p>
   </div>
   <app-file-upload
     heading="1. Would you like to upload your bank transactions?"
-    subHeading=" "
-    btnTitle="Upload File"
-    (uploadedData)="checkUploadedTransactionsData($event)"
+    (uploadedData)="useUploadedTransactionsData($event)"
     [defaultDataStr]="defaultTransactionDataStr"
-    (defaultData)="useDefaultData()"
+    (defaultData)="useDefaultTransactionsData()"
     dataCaption="Notice that every transaction consists of a date, a description, and an amount. Amounts that are greater than zero are income and those that are less are expenses.
       If you'd like to upload your data, make sure to follow the format shown below. Each transaction must follow this format so that PFT can understand the data. Any additional headers will be ignored."
   ></app-file-upload>
@@ -29,57 +26,50 @@
     *ngIf="uploadedTransactionsData == true"
     heading="2. Would you like to upload a list of categories and keywords?"
     subHeading="PFT will use this to categorize your expenses into different buckets."
-    btnTitle="Upload File"
-    (uploadedData)="checkUploadedExpensesCategoryData($event)"
+    (uploadedData)="useUploadedCategoryData($event)"
     [defaultDataStr]="defaultCategoryString"
-    (defaultData)="doNotUploadCategories()"
+    (defaultData)="useDefaultCategoryData()"
     dataCaption="The first value for every row is a category followed by the keywords
       associated to it. If you'd like to upload your own .csv file, make sure to follow the format shown
       below."
   ></app-file-upload>
 
-  <div style="margin-left: 30px" *ngIf="data.length > 0">
+  <div style="margin-left: 30px" *ngIf="firstChartData.length > 0">
     <div
       *ngIf="
         (uploadedTransactionsData == true &&
-          uploadedExpensesCategoryData != undefined) ||
+          uploadCategoriesData != undefined) ||
         (uploadedTransactionsData == true && uploadCategoriesData == false)
       "
     >
       <h2 style="margin-bottom: 30px; margin-top: 30px">
-        3. Nicely done! Here's what I made for you.
+        3. Nicely done! Here's what I have for you.
       </h2>
       <p style="margin-top: -20px; margin-left: 30px; margin-right: 20px">
         The interactive visualizations shown below represent a picture of your
-        finances every month. You can click through the legend and see how it
+        finances for each month. You can click through the legend and see how it
         changes your charts!
       </p>
       <p style="margin-top: -10px; margin-left: 30px; margin-right: 20px">
-        Keep in mind that these are noncummulative&#8212;each month's data is
+        Keep in mind that these are noncummulative&#8212;each monthly data is
         completely independent from each other.
       </p>
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <app-chart
-            type="line"
-            [title]="firstChartTitle"
-            [data]="data"
-            [labels]="labels"
-            [colors]="firstChartColors"
-          ></app-chart>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 20px">
-        <div class="col-md-12 col-sm-12">
-          <app-chart
-            type="line"
-            title="Expenses By Category"
-            [data]="data2"
-            [labels]="labels"
-            [colors]="secondChartColors"
-          ></app-chart>
-        </div>
-      </div>
+
+      <app-chart
+        type="line"
+        [title]="firstChartTitle"
+        [data]="firstChartData"
+        [labels]="labels"
+        [colors]="firstChartColors"
+      ></app-chart>
+
+      <app-chart
+        type="line"
+        title="Expenses By Category"
+        [data]="secondChartData"
+        [labels]="labels"
+        [colors]="secondChartColors"
+      ></app-chart>
     </div>
   </div>
 </div>
