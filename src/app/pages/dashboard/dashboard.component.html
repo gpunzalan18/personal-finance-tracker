@@ -10,8 +10,8 @@
     <p>
       Please note that PFT will not store any of the information you provide.
       The downside is that every time you visit, you'd have to provide your data
-      again. Alternatively, if you simply want to explore what I can do, PFT
-      will give you an option to use a demo data along the way.
+      again. Alternatively, if you simply want to explore, PFT will give you an
+      option to use a demo data along the way.
     </p>
   </div>
   <app-file-upload
@@ -21,14 +21,14 @@
     (uploadedData)="checkUploadedTransactionsData($event)"
     [defaultDataStr]="defaultTransactionDataStr"
     (defaultData)="useDefaultData()"
-    dataCaption="Notice that every row is a transaction that consists of a date, a description, and an amount. Amounts that are greater than zero are part of your income and those that are less are considered expenses.
-      If you'd like to upload your data, make sure to follow the format shown below. Each transaction must follow this format so that I can understand the data. Any additional headers will be ignored."
+    dataCaption="Notice that every transaction consists of a date, a description, and an amount. Amounts that are greater than zero are income and those that are less are expenses.
+      If you'd like to upload your data, make sure to follow the format shown below. Each transaction must follow this format so that PFT can understand the data. Any additional headers will be ignored."
   ></app-file-upload>
 
   <app-file-upload
     *ngIf="uploadedTransactionsData == true"
     heading="2. Would you like to upload a list of categories and keywords?"
-    subHeading="This is what I'll use to categorize your expenses into different buckets."
+    subHeading="PFT will use this to categorize your expenses into different buckets."
     btnTitle="Upload File"
     (uploadedData)="checkUploadedExpensesCategoryData($event)"
     [defaultDataStr]="defaultCategoryString"

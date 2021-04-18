@@ -1,9 +1,8 @@
 <div style="margin-left: 50px">
   <h2 style="margin-left: -28px">{{ heading }}</h2>
   <p *ngIf="subHeading != ''">
-    {{ subHeading }} You can upload a .csv file that follows a specific format.
-    To see what that looks like, <span><em>click Demo</em></span
-    >.
+    {{ subHeading }} If you do not want to upload your information, click
+    <span> <em>Demo</em> </span>.
   </p>
   <button
     [disabled]="disabled"
@@ -11,7 +10,7 @@
     mat-raised-button
     (click)="file.click()"
   >
-    Yes, I'd like that.
+    Upload File
   </button>
   <button
     [disabled]="disabled"
@@ -21,8 +20,8 @@
   >
     Demo
   </button>
-  <em *ngIf="disabled" style="margin-left: 10px; font-size: smaller"
-    >If you'd like to upload a file, reload the page and start again.
+  <em *ngIf="disabled" style="margin-left: 10px; font-size: smaller">
+    If you'd like to upload a file, reload the page and start again.
   </em>
   <input
     [disabled]="disabled"
@@ -44,7 +43,7 @@
         mat-raised-button
         (click)="parseBtn.click()"
       >
-        That sounds good!
+        Let's use this data.
       </button>
       <button
         #parseBtn
@@ -68,7 +67,7 @@
         #upload
         (click)="parseBtn.click()"
       >
-        yes, it looks good.
+        Let's use this data.
       </button>
       <button
         #parseBtn
