@@ -79,7 +79,7 @@ export class ParserService {
           transactionType = TransactionType.EXPENSES;
         }
       }
-      const date: string = transaction[0];
+      const date: string = transaction[0].trim();
       let monthYearKey = `${date.substr(0, 2)}_${date.substr(6, 4)}`;
 
       let transactionsList: any = monthlyTransactionsMap.get(monthYearKey);

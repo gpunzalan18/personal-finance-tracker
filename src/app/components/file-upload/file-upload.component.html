@@ -31,10 +31,16 @@
     (change)="onChange($event)"
   />
   <div *ngIf="!data && useDefault == true">
-    <div *ngIf="!disabled">
-      <strong>Does this look good to you?</strong>
+    <div>
+      <strong *ngIf="!disabled">Does this look good to you?</strong>
       <p>{{ dataCaption }}</p>
-      <button class="btn" mat-raised-button #upload (click)="parseBtn.click()">
+      <button
+        *ngIf="!disabled"
+        class="btn"
+        mat-raised-button
+        #upload
+        (click)="parseBtn.click()"
+      >
         Yes, it looks good.
       </button>
       <button
@@ -49,10 +55,16 @@
     </pre>
   </div>
   <div *ngIf="data">
-    <div *ngIf="!disabled">
-      <strong>Does this look good to you?</strong>
+    <div>
+      <strong *ngIf="!disabled">Does this look good to you?</strong>
       <p>{{ dataCaption }}</p>
-      <button class="btn" mat-raised-button #upload (click)="parseBtn.click()">
+      <button
+        *ngIf="!disabled"
+        class="btn"
+        mat-raised-button
+        #upload
+        (click)="parseBtn.click()"
+      >
         Yup, looks good.
       </button>
       <button

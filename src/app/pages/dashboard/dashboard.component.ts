@@ -85,6 +85,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         data.incomes.forEach((mt) => {
           incomesData.push(mt.total);
           this.labels.push(mt.title);
+          console.log(mt);
         });
         data.savings?.forEach((mt) => {
           savingsData.push(mt.total);
@@ -108,14 +109,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         label: 'incomes',
         fill: false,
       },
-
-      {
-        data: expensesData,
-        label: 'expenses',
-        fill: false,
-      },
     ];
-
     const reducer = (sum: number, curr: number) => sum + curr;
     if (savingsData.reduce(reducer) > 0) {
       this.data.push({
@@ -124,6 +118,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         fill: false,
       });
     }
+    this.data.push({
+      data: expensesData,
+      label: 'expenses',
+      fill: false,
+    });
     this.storeService.categories.forEach((category, index) => {
       this.data2.push({
         data: this.storeService.categorizedTransactions[index],
