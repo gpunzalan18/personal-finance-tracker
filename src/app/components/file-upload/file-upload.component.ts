@@ -28,7 +28,6 @@ export class FileUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.default = `\n${this.defaultDataStr}`;
-    console.log(this.defaultDataStr);
   }
 
   onChange(event: any) {
