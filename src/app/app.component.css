@@ -73,6 +73,12 @@ footer a {
   font-size: 1.3em;
 }
 
+.title-decor {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
 .note {
   position: absolute;
   right: 20px;

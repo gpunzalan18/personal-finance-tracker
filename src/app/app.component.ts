@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Personal Finance Tracker';
+  title = 'PFT';
   year = new Date().getFullYear();
   reload() {
     window.location.reload();
