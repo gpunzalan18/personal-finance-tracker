@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Personal Finance Tracker';
-
+  year = new Date().getFullYear();
   reload() {
     window.location.reload();
   }

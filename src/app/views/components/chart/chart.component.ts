@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-chart',

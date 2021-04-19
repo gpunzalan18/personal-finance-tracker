@@ -1,4 +1,3 @@
-import { ExpensesCategory } from './expenses-categoy.enum';
 
 export class CategorizedExpenses {
   constructor(

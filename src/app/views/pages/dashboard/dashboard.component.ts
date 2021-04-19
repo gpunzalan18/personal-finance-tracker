@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ParserService } from '../../services/parser/parser.service';
-import { TypedTransactions } from '../../services/models/typed-transactions';
+import { ParserService } from '../../../services/parser/parser.service';
+import { TypedTransactions } from '../../../models/typed-transactions';
 import { Subject } from 'rxjs';
 import { RegexService } from 'src/app/services/regex/regex.service';
 import { StoreService } from 'src/app/services/store/store.service';
-import { Color } from 'src/app/services/models/view/color.enum';
-import { ColorService } from 'src/app/services/view/color/color.service';
+import { Color } from 'src/app/models/color.enum';
+import { ColorService } from 'src/app/services/color/color.service';
 
 @Component({
   selector: 'app-dashboard',

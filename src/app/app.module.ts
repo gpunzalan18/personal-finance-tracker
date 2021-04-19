@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ChartComponent } from './components/chart/chart.component';
+import { FileUploadComponent } from './views/components/file-upload/file-upload.component';
+import { DashboardComponent } from './views/pages/dashboard/dashboard.component';
+import { ChartComponent } from './views/components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Color } from '../../models/view/color.enum';
+import { Color } from '../../models/color.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ColorService {
   private opacity: number = 0.4;
-  constructor() {}
 
   getColorSet(colorSet: Color[]): any {
     let colors: any[] = [];

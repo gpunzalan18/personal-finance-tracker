@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { Transaction } from '../models/transaction';
-import { TransactionType } from '../models/transaction-type.enum';
+import { Transaction } from '../../models/transaction';
+import { TransactionType } from '../../models/transaction-type.enum';
 import { RegexService } from '../regex/regex.service';
 import { StoreService } from '../store/store.service';
-import { MonthlyTransactions } from '../models/monthly-transactions';
+import { MonthlyTransactions } from '../../models/monthly-transactions';
 
 @Injectable({
   providedIn: 'root',
@@ -27,27 +26,40 @@ export class ParserService {
   }
 
   parseTransactions(data: string) {
-    let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
-    // let headers: string[] = cleanUpData[0].split(',');
-    this.storeService.resetStore();
-    let monthlyTransactionsMap: Map<
-      string,
-      Transaction[]
-    > = this.buildMonthlyTransactions(cleanUpData);
+    try {
+      let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
+      this.storeService.resetStore();
+      let monthlyTransactionsMap: Map<
+        string,
+        Transaction[]
+      > = this.buildMonthlyTransactions(cleanUpData);
 
-    monthlyTransactionsMap.forEach((transactions, key) => {
-      this.storeService.typedTransactions.incomes.push(
-        this.getTransactionsByType(key, transactions, TransactionType.INCOME)
+      monthlyTransactionsMap.forEach((transactions, key) => {
+        this.storeService.typedTransactions.incomes.push(
+          this.getTransactionsByType(key, transactions, TransactionType.INCOME)
+        );
+        this.storeService.typedTransactions.savings?.push(
+          this.getTransactionsByType(key, transactions, TransactionType.SAVINGS)
+        );
+        this.storeService.typedTransactions.expenses.push(
+          this.getTransactionsByType(
+            key,
+            transactions,
+            TransactionType.EXPENSES
+          )
+        );
+      });
+      this.buildCategorizedExpenses(
+        this.storeService.typedTransactions.expenses
       );
-      this.storeService.typedTransactions.savings?.push(
-        this.getTransactionsByType(key, transactions, TransactionType.SAVINGS)
+      this.parseTransactionsSubject.next(this.storeService.typedTransactions);
+    } catch (e) {
+      console.error('ERR - failed to parse transactions.');
+      alert(
+        'Something went wrong. Please make sure you upload a valid transaction file, or use the "Demo" option to see the correct format.'
       );
-      this.storeService.typedTransactions.expenses.push(
-        this.getTransactionsByType(key, transactions, TransactionType.EXPENSES)
-      );
-    });
-    this.buildCategorizedExpenses(this.storeService.typedTransactions.expenses);
-    this.parseTransactionsSubject.next(this.storeService.typedTransactions);
+      window.location.reload();
+    }
   }
 
   public buildCategorizedExpenses(expenses: MonthlyTransactions[]) {

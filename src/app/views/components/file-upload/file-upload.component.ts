@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ParserService } from 'src/app/services/parser/parser.service';
 import { Subject } from 'rxjs';
 import { Output, EventEmitter } from '@angular/core';
-import { Transaction } from 'src/app/services/models/transaction';
+import { Transaction } from 'src/app/models/transaction';
 
 @Component({
   selector: 'app-file-upload',

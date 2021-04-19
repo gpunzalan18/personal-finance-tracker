@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Transaction } from '../models/transaction';
-import { TypedTransactions } from '../models/typed-transactions';
+import { Transaction } from '../../models/transaction';
+import { TypedTransactions } from '../../models/typed-transactions';
 
 import * as defaultRegexData from '../../services/store/regex.json';
 

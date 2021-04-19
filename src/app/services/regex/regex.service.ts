@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ExpensesCategory } from '../models/expenses-categoy.enum';
+import { ExpensesCategory } from '../../models/expenses-categoy.enum';
 import { StoreService } from '../store/store.service';
 import * as data from '../store/regex.json';
 
