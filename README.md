@@ -1,6 +1,6 @@
 # Personal Finance Tracker
 
-[Personal Finance Tracker (PFT)](https://eager-bhabha-3972a8.netlify.app/) is a simple tool to understand income and expenses and provide a wholistic picture of one's finances.
+[Personal Finance Tracker (PFT)](https://eager-bhabha-3972a8.netlify.app/) is a simple tool to understand income and expenses and provide a holistic picture of one's finances.
 
 Keep in mind that PFT does not store any of the information provided. Users will have to provide data again every time they visit PFT. Alternatively, there is an option to use demo data so that users can explore the tool.
 

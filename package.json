@@ -23,7 +23,6 @@
     "@angular/platform-browser-dynamic": "~11.2.6",
     "@angular/router": "~11.2.6",
     "chart.js": "2.7.0",
-    "chartjs-plugin-annotation": "0.5.5",
     "ng2-charts": "2.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
