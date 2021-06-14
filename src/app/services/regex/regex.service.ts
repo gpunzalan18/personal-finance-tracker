@@ -38,7 +38,11 @@ export class RegexService {
   }
 
   getSavingsRegex(): RegExp {
-    return new RegExp('savings|sav');
+    return new RegExp('savings|to sav');
+  }
+
+  getSavingsLoanRegex(): RegExp {
+    return new RegExp('savings|from sav');
   }
 
   setExpensesCategoryRegex(categoryMap: Map<string, string[]>): void {
