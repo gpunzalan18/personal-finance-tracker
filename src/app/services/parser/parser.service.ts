@@ -29,10 +29,8 @@ export class ParserService {
     try {
       let cleanUpData: string[] = data.toLocaleLowerCase().trim().split('\n');
       this.storeService.resetStore();
-      let monthlyTransactionsMap: Map<
-        string,
-        Transaction[]
-      > = this.buildMonthlyTransactions(cleanUpData);
+      let monthlyTransactionsMap: Map<string, Transaction[]> =
+        this.buildMonthlyTransactions(cleanUpData);
 
       monthlyTransactionsMap.forEach((transactions, key) => {
         this.storeService.typedTransactions.incomes.push(
@@ -141,6 +139,14 @@ export class ParserService {
       '02_2021': 'February 2021',
       '03_2021': 'March 2021',
       '04_2021': 'April 2021',
+      '05_2021': 'May 2021',
+      '06_2021': 'June 2021',
+      '07_2021': 'July 2021',
+      '08_2021': 'August 2021',
+      '09_2021': 'September 2021',
+      '10_2021': 'October 2021',
+      '11_2021': 'November 2021',
+      '12_2021': 'December 2021',
     };
     return months[monthYearKey];
   }
