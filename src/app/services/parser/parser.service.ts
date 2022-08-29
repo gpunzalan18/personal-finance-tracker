@@ -151,6 +151,18 @@ export class ParserService {
       '10_2021': 'October 2021',
       '11_2021': 'November 2021',
       '12_2021': 'December 2021',
+      '01_2022': 'January 2022',
+      '02_2022': 'February 2022',
+      '03_2022': 'March 2022',
+      '04_2022': 'April 2022',
+      '05_2022': 'May 2022',
+      '06_2022': 'June 2022',
+      '07_2022': 'July 2022',
+      '08_2022': 'August 2022',
+      '09_2022': 'September 2022',
+      '10_2022': 'October 2022',
+      '11_2022': 'November 2022',
+      '12_2022': 'December 2022',
     };
     return months[monthYearKey];
   }
