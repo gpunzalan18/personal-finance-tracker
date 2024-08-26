@@ -138,32 +138,27 @@ export class ParserService {
   }
 
   private getMonthForTitle(monthYearKey: string) {
-    const months: any = {
-      '01_2021': 'January 2021',
-      '02_2021': 'February 2021',
-      '03_2021': 'March 2021',
-      '04_2021': 'April 2021',
-      '05_2021': 'May 2021',
-      '06_2021': 'June 2021',
-      '07_2021': 'July 2021',
-      '08_2021': 'August 2021',
-      '09_2021': 'September 2021',
-      '10_2021': 'October 2021',
-      '11_2021': 'November 2021',
-      '12_2021': 'December 2021',
-      '01_2022': 'January 2022',
-      '02_2022': 'February 2022',
-      '03_2022': 'March 2022',
-      '04_2022': 'April 2022',
-      '05_2022': 'May 2022',
-      '06_2022': 'June 2022',
-      '07_2022': 'July 2022',
-      '08_2022': 'August 2022',
-      '09_2022': 'September 2022',
-      '10_2022': 'October 2022',
-      '11_2022': 'November 2022',
-      '12_2022': 'December 2022',
-    };
-    return months[monthYearKey];
+    const [month, year] = monthYearKey.split('_');
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    const monthIndex = parseInt(month, 10) - 1; // Convert month to 0-based index
+    if (monthIndex < 0 || monthIndex > 11 || isNaN(monthIndex)) {
+      throw new Error('Invalid month provided.');
+    }
+
+    return `${monthNames[monthIndex]} ${year}`;
   }
 }
