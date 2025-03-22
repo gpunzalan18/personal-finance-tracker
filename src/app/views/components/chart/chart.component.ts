@@ -10,6 +10,7 @@ export class ChartComponent implements OnInit {
   public canvas!: ElementRef;
   public options: any;
   public legend: any = true;
+  public type: any = "line";
   @Input() title: string = '';
   @Input() data: any[] = [];
   @Input() labels: any[] = [];
